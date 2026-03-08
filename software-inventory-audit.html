@@ -1,0 +1,141 @@
+---
+layout: default
+title: "Software Inventory Audit"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-box-open"></i> SYSTEM DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Software Inventory Audit.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Bypass slow WMI queries. Instantly audit installed applications across remote endpoints by directly parsing the Windows Registry. Search for specific software or pull a complete system inventory in seconds.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] SOFTWARE INVENTORY AUDIT</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Querying registry hives on LAPTOP-US-4829...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;"> > Filtering by keyword: 'Adobe'...</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold; margin-bottom: 0.5rem;">[UHDC SUCCESS] Found 2 installed applications.</p>
+
+            <!-- Embedded HTML Table Mockup -->
+            <div style="margin-bottom: 1rem; max-height: 180px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-base); font-family: 'Inter', sans-serif;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                    <thead style="position: sticky; top: 0; background: var(--bg-surface); color: var(--accent-blue); box-shadow: var(--shadow-sm);">
+                        <tr>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Application Name</th>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Version</th>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Publisher</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 8px; color: var(--text-primary); font-weight: 500;">Adobe Acrobat Reader DC</td>
+                            <td style="padding: 8px; color: var(--accent-green); font-family: Consolas, monospace;">23.003.20244</td>
+                            <td style="padding: 8px; color: var(--text-secondary);">Adobe Systems Inc.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; color: var(--text-primary); font-weight: 500;">Adobe Creative Cloud</td>
+                            <td style="padding: 8px; color: var(--accent-green); font-family: Consolas, monospace;">5.10.0.573</td>
+                            <td style="padding: 8px; color: var(--text-secondary);">Adobe Systems Inc.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">High-Performance Telemetry</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Standard software auditing scripts rely on WMI, which is notoriously slow and resource-intensive. This engine bypasses WMI entirely, reading the raw registry hives to deliver results instantly without impacting the user's CPU.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Win32_Product Evasion</h3>
+            <p style="color: var(--text-secondary);">Explicitly avoids the <code>Win32_Product</code> WMI class, which triggers a hidden MSI reconfiguration check for every installed app. This prevents the massive CPU spikes and event log spam associated with legacy auditing tools.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-folder-tree"></i></div>
+            <h3 class="console-font">Dual-Hive Parsing</h3>
+            <p style="color: var(--text-secondary);">Simultaneously queries both the 64-bit and 32-bit (<code>Wow6432Node</code>) <code>Uninstall</code> registry keys to ensure no legacy applications are missed during the audit.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-filter"></i></div>
+            <h3 class="console-font">Dynamic Filtering</h3>
+            <p style="color: var(--text-secondary);">Supports partial keyword matching. Instead of pulling a list of 200 applications, technicians can pass a keyword (like "VPN" or "Office") to instantly filter the pipeline and return only relevant results.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the architectural dangers of <code>Win32_Product</code> and teaches the correct method of parsing the Windows Registry for software data.
+        </p>
+
+        <div class="mock-code">
+            <span class="text-muted"># Define 64-bit and 32-bit registry paths</span><br>
+            <span class="var">$paths</span> = @(<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'</span><br>
+            )<br><br>
+            <span class="text-muted"># Query properties and filter out system components</span><br>
+            <span class="var">$installed</span> = <span class="cmd">Get-ItemProperty</span> <span class="var">$paths</span> | <span class="cmd">Where-Object</span> { <span class="var">$_</span>.DisplayName -and <span class="var">$_</span>.SystemComponent -ne 1 }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening the Control Panel, navigating to 'Programs and Features' (appwiz.cpl), and scrolling through the list of installed applications.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why is the `Win32_Product` WMI class so bad?</div>
+        <div class="faq-answer">Querying <code>Win32_Product</code> triggers a Windows Installer provider that performs a consistency check on every single MSI package installed on the system. If it finds a missing shortcut or corrupted icon, it will actually attempt to repair the application in the background. This causes massive CPU spikes, fills the Application Event Log with Event ID 1035 warnings, and can take minutes to complete. Reading the registry directly takes milliseconds and is completely non-destructive.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Does this show applications installed in the user's AppData folder?</div>
+        <div class="faq-answer">No. By design, this script queries the <code>HKEY_LOCAL_MACHINE (HKLM)</code> hive, which contains software installed system-wide (for all users). It does not query <code>HKEY_CURRENT_USER (HKCU)</code>, as doing so over WinRM under the SYSTEM context would only return the SYSTEM account's profile, not the active user's profile.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: What happens if the firewall blocks WinRM?</div>
+        <div class="faq-answer">Like all UHDC tools, it features a resilient fallback. If WinRM (Port 5985) is blocked, the engine encodes the registry-parsing payload into Base64 and deploys PsExec to execute it locally on the target machine, capturing the output stream and returning the JSON data to the console.</div>
+    </div>
+</section>

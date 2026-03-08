@@ -1,0 +1,114 @@
+---
+layout: default
+title: "Print Queue Remediation"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-print"></i> SERVICE REMEDIATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Print Queue Remediation. Instantly.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Clear corrupted print jobs and restart the Windows Print Spooler across the network in under 3 seconds. Eliminate the need to ask users to "save their work and reboot."
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] Connecting to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-secondary);"> > [1/3] Stopping Print Spooler service...</p>
+            <p style="color: var(--text-secondary);"> > [2/3] Clearing stuck print jobs (.SHD / .SPL)...</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;"> > [3/3] Starting Print Spooler service...</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold;">[UHDC SUCCESS] Print Spooler restarted and queue cleared!</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">The End of the "10-Minute Reboot"</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a single corrupted document gets stuck on "Deleting - Error," it blocks the entire local print queue. Traditionally, technicians force users to reboot to clear the memory lock. The UHDC handles this programmatically in the background.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-lock-open"></i></div>
+            <h3 class="console-font">Service Decoupling</h3>
+            <p style="color: var(--text-secondary);">The script safely stops the <code>Spooler</code> service first. This is critical, as it forces the Windows kernel to drop the active file locks on the corrupted print jobs, allowing them to be deleted.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-file-circle-xmark"></i></div>
+            <h3 class="console-font">Targeted Purge</h3>
+            <p style="color: var(--text-secondary);">It explicitly targets the <code>\spool\PRINTERS</code> directory using the <code>-File</code> flag. This ensures only the temporary <code>.SHD</code> and <code>.SPL</code> files are destroyed, leaving installed printer drivers perfectly intact.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-stopwatch"></i></div>
+            <h3 class="console-font">Zero Interruption</h3>
+            <p style="color: var(--text-secondary);">Because the remediation happens over WinRM in Session 0, the user's workflow is never interrupted. They simply click "Print" again 3 seconds later, and the document goes through.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-warning); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the exact PowerShell pipeline required to safely clear a print queue over the network.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Stop-Service</span> <span class="param">-Name</span> <span class="str">Spooler</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="param">-Path</span> <span class="str">'C:\Windows\System32\spool\PRINTERS\*'</span> <span class="param">-File</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Service</span> <span class="param">-Name</span> <span class="str">Spooler</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+            <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>If you were physically at the user's desk, you would open Services (services.msc), stop the 'Print Spooler', open File Explorer to the PRINTERS folder, delete all the files inside, and then start the service again.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why do we have to stop the service first? Why not just delete the files?</div>
+        <div class="faq-answer">When a document is sent to the printer, the Print Spooler service creates temporary files (Shadow <code>.SHD</code> and Spool <code>.SPL</code> files) on the hard drive. While the service is actively trying to process those files, it places a strict file lock on them. If you try to delete them while the service is running, Windows will throw an "Access Denied - File in Use" error. Stopping the service drops the lock.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Will this delete the user's installed printers or printer drivers?</div>
+        <div class="faq-answer">No. This script only targets the <code>\spool\PRINTERS</code> directory, which exclusively holds temporary print jobs. The actual printer configurations, IP ports, and drivers are stored in the registry and the <code>\spool\drivers</code> directory, which are left completely untouched.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Does this fix issues where a network printer says "Offline"?</div>
+        <div class="faq-answer">Usually, no. If a printer says "Offline," it typically means the computer cannot communicate with the printer's IP address or the print server. This tool specifically fixes <em>local queue corruption</em>—where the computer can see the printer, but the internal Windows queue is jammed.</div>
+    </div>
+</section>

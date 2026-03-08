@@ -1,0 +1,117 @@
+---
+layout: default
+title: "Local Privilege Auditing"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-green); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-user-shield"></i> PRIVILEGE AUDIT
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Local Privilege Auditing. Instantly.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Verify local administrator rights across remote endpoints in seconds. Detect unauthorized privilege escalation and validate LAPS functionality without interrupting the user.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-green); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-green);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] Connecting to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">--- Administrators Group Members ---</p>
+
+            <p style="color: var(--accent-green); margin-bottom: 0.2rem;"> > LAPTOP-US-4829\Administrator</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; padding-left: 1.5rem;">Type: User | Source: Local</p>
+
+            <p style="color: var(--accent-green); margin-bottom: 0.2rem;"> > ACME\Domain Admins</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; padding-left: 1.5rem;">Type: Group | Source: ActiveDirectory</p>
+
+            <p style="color: var(--accent-danger); margin-bottom: 0.2rem; font-weight: bold;"> > ACME\jsmith</p>
+            <p style="color: var(--text-secondary); padding-left: 1.5rem;">Type: User | Source: ActiveDirectory</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Trust, But Verify.</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Active Directory only shows what domain groups a user belongs to. It cannot tell you if a local IT technician manually added a user's domain account directly to the local SAM database of a specific laptop. The UHDC bridges this visibility gap.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-database"></i></div>
+            <h3 class="console-font">Direct SAM Query</h3>
+            <p style="color: var(--text-secondary);">Bypasses Active Directory assumptions to query the actual hardware's Security Account Manager (SAM) database, providing absolute truth regarding local endpoint privileges.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 class="console-font">Source Identification</h3>
+            <p style="color: var(--text-secondary);">Clearly distinguishes between local machine accounts (like the built-in Administrator) and Active Directory domain accounts, making it easy to spot unauthorized domain users.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-user-secret"></i></div>
+            <h3 class="console-font">Silent Execution</h3>
+            <p style="color: var(--text-secondary);">Runs entirely in the background via WinRM. You can audit a machine for suspicious activity or verify LAPS functionality without the user ever knowing you are connected.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-green); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the exact PowerShell pipeline required to query local security groups over the network.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Get-LocalGroupMember</span> <span class="param">-Group</span> <span class="str">'Administrators'</span> | <span class="cmd">Select-Object</span> Name, PrincipalSource, ObjectClass<br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
+            <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Right-click the Start Menu, select 'Computer Management' (compmgmt.msc), expand 'Local Users and Groups', click 'Groups', and double-click the 'Administrators' group to view its members.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why do we need to query the PC directly? Can't we just look at the user's Active Directory groups?</div>
+        <div class="faq-answer">No. Active Directory only shows what <em>domain groups</em> a user belongs to. It does not know if a local IT technician manually added a user's domain account directly to the local SAM database of a specific laptop. The only way to definitively know who has admin rights on a specific piece of hardware is to query the hardware itself.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: What does the "PrincipalSource" property mean?</div>
+        <div class="faq-answer"><code>PrincipalSource</code> tells you where the account originates. If it says <strong>Local</strong>, the account exists only on that specific computer's hard drive (like the built-in 'Administrator' account). If it says <strong>ActiveDirectory</strong>, it is a domain account (like 'ACME\jsmith') that has been granted local privileges.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Can this script remove unauthorized administrators?</div>
+        <div class="faq-answer">This specific script is strictly for <em>auditing</em> (read-only). If you identify an unauthorized user, you would typically use a Group Policy update, Intune Endpoint Security policy, or a custom remote command to strip the access, ensuring the remediation aligns with your organization's broader security framework.</div>
+    </div>
+</section>

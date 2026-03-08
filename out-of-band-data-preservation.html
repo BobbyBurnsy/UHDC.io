@@ -1,0 +1,122 @@
+---
+layout: default
+title: "Out-of-Band Data Preservation"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-green); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-bookmark"></i> DATA PRESERVATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Out-of-Band Data Preservation.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Secure, zero-touch extraction of Chromium browser data. Bypass strict SMB file-sharing firewalls by encoding raw SQLite bookmark databases into Base64 streams and extracting them over WinRM or RPC.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-green); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-green);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM / RPC Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE DATA PRESERVATION ENGINE</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Extracting and encoding bookmarks...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Decoding Base64 streams and reconstructing files...</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem; padding-left: 1.5rem;">> [OK] Chrome Bookmarks successfully secured.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.5rem;">> [OK] Edge Bookmarks successfully secured.</p>
+
+            <p style="color: var(--accent-green); font-weight: bold; margin-bottom: 0.2rem;">[UHDC SUCCESS] Extraction complete. Rendering local destination...</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">> C:\UHDC\Bookmarks\LAPTOP-US-4829-jsmith-20260302-1422</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">The Administrative Safety Net</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user's Windows profile becomes corrupted or they are scheduled for an immediate hardware replacement, a manual profile wipe risks permanent data loss. This engine acts as a targeted safety net to rescue critical local data instantly, even on highly restricted networks.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-file-export"></i></div>
+            <h3 class="console-font">Out-of-Band Extraction</h3>
+            <p style="color: var(--text-secondary);">Executes a payload locally on the target that reads the SQLite databases, encodes them into Base64 strings, and transmits them back to the console via standard output streams, bypassing SMB blocks entirely.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-folder-plus"></i></div>
+            <h3 class="console-font">Local Reconstruction</h3>
+            <p style="color: var(--text-secondary);">The console catches the Base64 output, decodes the byte arrays, and automatically reconstructs the files into a local, timestamped destination folder (e.g., <code>C:\UHDC\Bookmarks\...</code>) on the technician's machine.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            <h3 class="console-font">Shell Handoff</h3>
+            <p style="color: var(--text-secondary);">Executes <code>explorer.exe</code> with the <code>/select</code> argument, breaking out of the PowerShell runspace to visually highlight the newly created backup folder directly on the technician's screen.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-green); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the advanced PowerShell logic used to encode raw files into text streams to bypass network firewalls.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$out</span> = <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> <span class="var">$Payload</span><br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$out</span> = <span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }<br>
+            <span class="text-muted"># Decode Base64 output back into files locally</span><br>
+            <span class="var">$bytes</span> = [Convert]::FromBase64String(<span class="var">$out</span>)<br>
+            [IO.File]::WriteAllBytes(<span class="var">$destFolder</span>, <span class="var">$bytes</span>)
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
+            <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening File Explorer, typing '%LocalAppData%\Google\Chrome\User Data\Default' into the address bar, copying the 'Bookmarks' file, and saving it to a flash drive.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why use Base64 encoding over standard output streams instead of just copying the file via SMB?</div>
+        <div class="faq-answer">Modern enterprise firewalls frequently block SMB (Port 445) to prevent lateral movement and ransomware spread. By reading the file locally on the target, encoding it into text, and passing it back through the WinRM or PsExec output stream, we completely bypass file-sharing restrictions and extract the data securely.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Does this backup the user's saved passwords or browsing history?</div>
+        <div class="faq-answer">No. It only backs up the <code>Bookmarks</code> file. Saved passwords in Chromium browsers are encrypted using the user's unique Windows DPAPI (Data Protection API) key. You cannot simply copy a password file from one PC to another; it will be unreadable. If a user needs their passwords transferred, they must sign into a browser sync profile.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: What does the `/select` argument do in the final step?</div>
+        <div class="faq-answer">When you run <code>explorer.exe "C:\Folder"</code>, Windows opens that folder. When you run <code>explorer.exe /select,"C:\Folder"</code>, Windows opens the <em>parent</em> directory and automatically highlights the specific folder. This is a quality-of-life feature that saves the technician from having to hunt for the newly created backup among dozens of other files.</div>
+    </div>
+</section>

@@ -1,0 +1,116 @@
+---
+layout: default
+title: "MECM Agent Synchronization"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-arrows-rotate"></i> DEPLOYMENT REMEDIATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            MECM Agent Synchronization.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Resolve stalled software deployments and force machine policy retrievals instantly. Safely restart the SMS Agent Host without forcing the user to reboot their computer.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] RESTART SCCM AGENT: LAPTOP-US-4829</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Connecting to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Stopping CcmExec service...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Starting CcmExec service...</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold; margin-bottom: 0.2rem;">[UHDC SUCCESS] SCCM Agent restarted successfully!</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">[i] Note: It may take 2-3 minutes for the PC to check in with the Site Server.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Unstick the Software Center</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When an application is permanently stuck on "Downloading 0%" or "Waiting to install," the standard help desk response is to ask the user to reboot and wait 15 minutes. This tool safely bounces the underlying service to resume the download immediately.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-stop"></i></div>
+            <h3 class="console-font">Service Decoupling</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote PowerShell session over Port 5985 (HTTP) to execute a strict <code>Stop-Service</code> command against the <code>CcmExec</code> (SMS Agent Host) service.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-hourglass-half"></i></div>
+            <h3 class="console-font">Lock Release Buffer</h3>
+            <p style="color: var(--text-secondary);">Intentionally executes a 4-second thread sleep. The SCCM agent aggressively writes to dozens of local log files. This buffer ensures all file locks are cleanly released before the service spins back up.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+            <h3 class="console-font">Policy Retrieval</h3>
+            <p style="color: var(--text-secondary);">Executes a <code>Start-Service</code> command to bring the agent back online. This fresh initialization automatically triggers a machine policy check-in with the MECM Management Point.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-warning); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic required to safely restart a monolithic service over WinRM without causing it to hang.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Stop-Service</span> <span class="param">-Name</span> <span class="str">CcmExec</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Sleep</span> <span class="param">-Seconds</span> <span class="str">4</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Service</span> <span class="param">-Name</span> <span class="str">CcmExec</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+            <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening Services (services.msc), locating 'SMS Agent Host', right-clicking it, and selecting 'Restart'. Alternatively, opening the Configuration Manager applet in the Control Panel, going to the Actions tab, and running the 'Machine Policy Retrieval & Evaluation Cycle'.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why not just use the `Restart-Service` cmdlet instead of Stop, Sleep, and Start?</div>
+        <div class="faq-answer">The native <code>Restart-Service</code> cmdlet executes the stop and start commands almost instantaneously. Because the SCCM agent is a heavy, monolithic service that hooks deeply into WMI and local log files, an instantaneous restart frequently results in the service hanging in a "Starting" state. Manually separating the commands and injecting a 4-second sleep guarantees stability.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Does this reinstall or repair a broken SCCM client?</div>
+        <div class="faq-answer">No. This script simply restarts the existing service. If the SCCM client is fundamentally broken (e.g., WMI repository corruption or missing binaries), the service will fail to start. For deep corruption, you would need to use the UHDC's "Deep Storage Remediation" tool to purge the cache, followed by a full client reinstall.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Will the user see anything happen on their screen?</div>
+        <div class="faq-answer">If the user has the Software Center window actively open on their screen, they might see it briefly flash or display a "Loading" spinner for a few seconds while the underlying service reconnects. Otherwise, the process is completely invisible to them.</div>
+    </div>
+</section>

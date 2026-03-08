@@ -1,0 +1,115 @@
+---
+layout: default
+title: "Advanced Power Controls"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-green); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-power-off"></i> POWER CONTROLS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Advanced Power & Session Controls.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Regain control of frozen endpoints instantly. Execute graceful reboots, forced hardware shutdowns, and targeted session logoffs using a highly resilient WinRM pipeline with automated PsExec fallbacks.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-green); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-green);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM / RPC Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] POWER CONTROLS: LAPTOP-US-4829</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--accent-warning); margin-bottom: 1.5rem; font-weight: bold;"> > Dispatching command: rwinsta.exe console</p>
+
+            <p style="color: var(--accent-green); font-weight: bold;">[UHDC SUCCESS] Power action 'Logoff' dispatched successfully!</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Reliability When It Matters Most</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a computer is completely frozen or a rogue application locks the screen, standard remote management tools often fail. This engine utilizes a dual-protocol approach to guarantee your commands reach the Service Control Manager.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Resilient Execution</h3>
+            <p style="color: var(--text-secondary);">Attempts to execute native power commands via WinRM first for maximum speed. If the machine is severely locked up and WMI is unresponsive, it automatically falls back to a Base64-encoded PsExec payload.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-user-slash"></i></div>
+            <h3 class="console-font">Session Decoupling</h3>
+            <p style="color: var(--text-secondary);">Features a "Force Logoff" option that utilizes legacy Terminal Services commands (<code>rwinsta</code>) to instantly drop the physical console session. This kicks disconnected users off shared kiosks without waiting for a full hardware reboot.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="console-font">Safety Mechanisms</h3>
+            <p style="color: var(--text-secondary);">Standard reboots are deployed with a 60-second timer, giving active users time to save their work. The GUI also includes an "Abort Restart" function to instantly cancel pending reboots if executed by mistake.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-green); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the exact command-line syntax used for the specific power action they selected, as well as the fallback logic.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> { <span class="cmd">shutdown.exe</span> <span class="param">/r</span> <span class="param">/t</span> <span class="str">60</span> }<br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WMI is frozen or WinRM is blocked</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
+            <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Clicking the Start Menu and selecting 'Restart', holding down the physical power button on the laptop for 10 seconds, or opening Task Manager, going to the 'Users' tab, and clicking 'Disconnect'.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why do we need a PsExec fallback for power controls?</div>
+        <div class="faq-answer">The native <code>Restart-Computer</code> cmdlet and standard WinRM sessions rely heavily on WMI (Windows Management Instrumentation). If a computer is severely frozen, the WMI service is often unresponsive, causing the command to fail. By automatically falling back to PsExec, we bypass WMI entirely and interact directly with the Service Control Manager to execute the native <code>shutdown.exe</code> binary, which is significantly more reliable on locked-up machines.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: What exactly is `rwinsta`?</div>
+        <div class="faq-answer"><code>rwinsta</code> stands for "Reset Windows Station." It is a legacy Terminal Services command. By passing the argument <code>console</code>, we are telling the operating system to instantly drop the physical console session (the user sitting at the keyboard). It is much faster than a full reboot because it leaves the Windows kernel and background services running while simply resetting the user interface.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: If I accidentally click "Standard Restart" on the wrong PC, can I stop it?</div>
+        <div class="faq-answer">Yes. Because the Standard Restart uses a 60-second timer (<code>/t 60</code>), you have a one-minute window to fix the mistake. Simply run the tool again against the same PC and select the <strong>"Abort Restart"</strong> option from the GUI. This sends a <code>shutdown /a</code> command, which instantly cancels the pending reboot.</div>
+    </div>
+</section>

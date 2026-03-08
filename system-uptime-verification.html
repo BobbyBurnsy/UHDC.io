@@ -1,0 +1,108 @@
+---
+layout: default
+title: "System Uptime Verification"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-clock-rotate-left"></i> SYSTEM DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            System Uptime Verification.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Enforce the "trust but verify" rule of IT support. Instantly calculate the precise timespan a machine has been running continuously to verify user reboot claims and identify potential stability issues.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WMI / CIM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] UPTIME CHECK: LAPTOP-US-4829</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Querying LAPTOP-US-4829...</p>
+            <p style="color: var(--text-muted);"> > Last Boot: 02/11/2026 08:14</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Uptime:    14 Days, 6 Hours, 22 Minutes</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold;">[!] ATTENTION: Machine has not been rebooted in over a week.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Trust, But Verify</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Users frequently confuse "closing the laptop lid" or "logging off" with a full system restart. Instead of arguing with the user over whether they actually rebooted, this tool provides absolute, mathematical proof of the system's state in seconds.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="console-font">CIM Telemetry Extraction</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote session over Port 5985 (HTTP) using the modern <code>Get-CimInstance</code> cmdlet to query the <code>Win32_OperatingSystem</code> class, bypassing legacy DCOM/RPC firewall blocks.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-calculator"></i></div>
+            <h3 class="console-font">Timespan Calculation</h3>
+            <p style="color: var(--text-secondary);">Extracts the <code>LastBootUpTime</code> property (which CIM automatically converts into a standard PowerShell datetime object) and subtracts it from the current time to create a precise timespan.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3 class="console-font">Automated Alerting</h3>
+            <p style="color: var(--text-secondary);">Evaluates the calculated uptime days. If the value is greater than 7, it automatically injects a high-visibility warning string into the console output to alert the technician of potential system instability.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 50 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the operating system and calculate the timespan delta.
+        </p>
+
+        <div class="mock-code">
+            <span class="var">$os</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_OperatingSystem</span><br>
+            <span class="var">$boot</span> = <span class="var">$os</span>.LastBootUpTime<br>
+            <span class="var">$uptime</span> = (<span class="cmd">Get-Date</span>) - <span class="var">$boot</span>
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Pressing Ctrl+Shift+Esc to open Task Manager, clicking the 'Performance' tab, selecting 'CPU', and looking at the 'Up time' counter at the bottom of the window.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why do users so frequently think they rebooted when they actually didn't?</div>
+        <div class="faq-answer">Aside from simply confusing "logging off" with "restarting," the biggest culprit is the Windows "Fast Startup" feature. By default, when a user clicks "Shut down" in Windows 10/11, the PC doesn't actually turn off completely; it logs the user out and hibernates the Windows kernel to make the next boot faster. Because the kernel never stopped running, the WMI Uptime counter never resets. Only a true "Restart" command (or a forced shutdown) resets the counter.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the script use `Get-CimInstance` instead of the older `Get-WmiObject`?</div>
+        <div class="faq-answer"><code>Get-WmiObject</code> relies on legacy DCOM/RPC protocols (Port 135 and dynamic high ports), which are frequently blocked by modern endpoint firewalls. <code>Get-CimInstance</code> is the modern standard; it routes the exact same WMI queries over the WinRM protocol (Port 5985/HTTP), which is much more firewall-friendly and reliable across enterprise networks.</div>
+    </div>
+</section>

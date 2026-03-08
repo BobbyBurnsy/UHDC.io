@@ -1,0 +1,121 @@
+---
+layout: default
+title: "Deep Storage Remediation"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-broom"></i> STORAGE REMEDIATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Deep Storage Remediation.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Aggressive, multi-stage cache orchestration and storage recovery. Recover gigabytes of space and resolve SCCM deployment failures using a unified WinRM pipeline with automated PsExec fallbacks.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE DEEP CLEANUP UTILITY</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Purging MECM cache, Temp directories, and Recycle Bin...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Dispatching background Disk Cleanup (cleanmgr)...</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold;">[UHDC SUCCESS] Deep Storage Remediation completed successfully via WinRM!</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Comprehensive Endpoint Purge</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When an automated software deployment repeatedly fails with "Hash Mismatch" or "Insufficient Disk Space" exceptions, standard temp clearing isn't enough. This engine orchestrates a synchronized local and remote pipeline to recover storage space instantly.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Unified Pipeline</h3>
+            <p style="color: var(--text-secondary);">Executes the entire 4-step remediation sequence within a single WinRM session. This drastically reduces network overhead compared to legacy scripts that establish multiple connections for different tasks.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-trash-can"></i></div>
+            <h3 class="console-font">Comprehensive Purge</h3>
+            <p style="color: var(--text-secondary);">Silently and recursively wipes the MECM (SCCM) cache, standard system bloat (<code>C:\Windows\Temp</code>), dynamically traverses all user profiles to clear AppData Temp folders, and forcefully empties the Recycle Bin.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="console-font">Resilient Fallback</h3>
+            <p style="color: var(--text-secondary);">If the endpoint's firewall blocks WinRM, the engine automatically encodes the entire remediation payload into Base64 and deploys it via PsExec under the <code>SYSTEM</code> context to guarantee execution.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-warning); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 200 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 pipeline required to safely purge system caches and trigger background cleanup utilities over the network.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">'C:\Windows\ccmcache\*'</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">'C:\Windows\Temp\*'</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Clear-RecycleBin</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Process</span> <span class="str">'cleanmgr.exe'</span> <span class="param">-ArgumentList</span> <span class="str">'/sagerun:1'</span> <span class="param">-WindowStyle</span> Hidden<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+            <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening Control Panel to clear the Configuration Manager cache, pressing Win+R to delete %temp% files, right-clicking to empty the Recycle Bin, and running the Windows Disk Cleanup utility.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: If a user is actively working and has files open, will the workflow fail or crash their applications?</div>
+        <div class="faq-answer">Neither. The engine uses the <code>-ErrorAction SilentlyContinue</code> parameter across all file deletion loops. If a cache file is actively locked by an open application (like Word or Chrome), the pipeline smoothly skips that specific file and moves to the next one without throwing errors or disrupting the user's workflow.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why delete the ccmcache folder directly instead of using the native SCCM COM object?</div>
+        <div class="faq-answer">The native COM object relies heavily on a perfectly healthy WMI repository on the target machine. If the SCCM client is broken, the cleanup fails. Executing a strict folder deletion bypasses local client health issues and guarantees the cache is purged.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: What does the `/sagerun:1` flag do for cleanmgr.exe?</div>
+        <div class="faq-answer">The <code>cleanmgr.exe</code> utility requires a user to manually check boxes in a GUI to tell it what to clean. The <code>/sagerun:1</code> flag tells the utility to run silently in the background using a pre-configured set of rules (usually configured via <code>/sageset:1</code> on your master image), allowing it to automatically clean up Windows Update files, memory dumps, and delivery optimization caches without any user interaction.</div>
+    </div>
+</section>

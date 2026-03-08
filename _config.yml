@@ -1,0 +1,16 @@
+# _config.yml
+name: "UHDC | Unified Help Desk Console"
+description: "The agentless orchestration platform designed to consolidate fragmented IT workflows behind a single pane of glass."
+url: "https://www.uhdc.io"
+baseurl: "" # CRITICAL: Leave this completely empty for custom domains
+github_repo: "https://github.com/bobbyburnsy/UHDC"
+
+# Build settings
+markdown: kramdown
+permalink: /:basename/
+
+# Collections
+collections:
+  capabilities:
+    output: true
+    permalink: /capabilities/:title/

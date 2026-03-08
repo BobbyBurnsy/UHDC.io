@@ -1,0 +1,104 @@
+---
+layout: default
+title: "Interactive Training Engine"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-graduation-cap"></i> UHDC ACADEMY
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Turn Every Ticket Into a Training Opportunity.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            The Interactive Training Engine pauses complex automation to teach junior technicians the underlying PowerShell and Graph API logic in real-time. Upskill your help desk while they resolve live calls.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--accent-warning); font-weight: bold;">[TRAINING] STEP 1: QUERY UPTIME</span>
+            <span style="color: var(--accent-blue); font-size: 0.85rem; font-weight: bold;">⭐ 850 XP</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1rem;">
+                <strong>WHAT IT DOES:</strong> We are establishing a remote WMI/CIM session to query the 'Win32_OperatingSystem' class. We retrieve the exact 'LastBootUpTime' property and subtract it from the current time to calculate the precise uptime.
+            </p>
+
+            <div class="mock-code">
+                <span class="var">$os</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_OperatingSystem</span><br>
+                <span class="var">$boot</span> = <span class="var">$os</span>.LastBootUpTime<br>
+                <span class="var">$uptime</span> = (<span class="cmd">Get-Date</span>) - <span class="var">$boot</span>
+            </div>
+
+            <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+                <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+                <p>If you were physically at the user's desk, you would press Ctrl+Shift+Esc to open Task Manager, click the 'Performance' tab, select 'CPU', and look at the 'Up time' counter at the bottom.</p>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
+                <div class="btn console-font" style="padding: 8px 16px; font-size: 0.8rem; border-color: var(--accent-danger); color: var(--accent-danger);">ABORT</div>
+                <div class="btn console-font" style="padding: 8px 16px; font-size: 0.8rem; background: var(--accent-green); color: white; border: none;">ACKNOWLEDGE & EXECUTE</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- THE PROBLEM VS SOLUTION -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">The "Black Box" Problem</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Automation is a double-edged sword. When you give a junior technician a GUI with a button that says "Fix Printer," they will click it, and the printer will be fixed. However, they learn absolutely nothing about <em>how</em> the Windows Print Spooler works.</p>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="comp-card comp-bad">
+            <h3 style="color: var(--accent-danger); margin-bottom: 1rem;"><i class="fa-solid fa-box"></i> Traditional Automation</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Technicians become reliant on the tool. If the tool breaks, or if they encounter an edge-case issue that the tool wasn't programmed to handle, they lack the foundational command-line knowledge required to troubleshoot the problem manually.</p>
+            <ul style="color: var(--text-primary); padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">Creates a single point of failure.</li>
+                <li style="margin-bottom: 0.5rem;">Stagnates career growth.</li>
+                <li>Increases escalations to Tier 2/3.</li>
+            </ul>
+        </div>
+
+        <div class="comp-card comp-good">
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem;"><i class="fa-solid fa-box-open"></i> UHDC Training Mode</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">When a new hire is added to the <code>Trainees</code> array in the configuration file, the console automatically locks them into Training Mode. The execution of every tool is paused at critical phases, forcing them to read and acknowledge the underlying logic.</p>
+            <ul style="color: var(--text-primary); padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">Teaches PowerShell & Graph API safely.</li>
+                <li style="margin-bottom: 0.5rem;">Builds foundational IT knowledge.</li>
+                <li>Raises the technical floor of the department.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE BREAKDOWN -->
+<section style="padding-top: 0; border-bottom: none;">
+    <h2 class="console-font" style="text-align: center;">Anatomy of a Training Module</h2>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 class="console-font">Contextual Triggers</h3>
+            <p style="color: var(--text-secondary);">Every module explains exactly <strong>when</strong> to use a specific tool. It teaches technicians how to identify the symptoms of a problem (e.g., "Use this when a user complains about bizarre application glitches") before applying the fix.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-code"></i></div>
+            <h3 class="console-font">Syntax Highlighting</h3>
+            <p style="color: var(--text-secondary);">The engine doesn't just show a wall of text. It utilizes a custom syntax highlighting engine to color-code variables, cmdlets, and parameters, making complex PowerShell scripts readable and digestible for beginners.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bridge"></i></div>
+            <h3 class="console-font">Bridging the Gap</h3>
+            <p style="color: var(--text-secondary);">Remote administration is highly abstract. By explicitly mapping the complex automation to the physical actions they would take if they were standing at the user's desk, the engine bridges the conceptual gap intuitively.</p>
+        </div>
+    </div>
+</section>

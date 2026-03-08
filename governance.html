@@ -1,0 +1,139 @@
+---
+layout: default
+title: "Security & Governance"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-shield-halved"></i> RISK MANAGEMENT FRAMEWORK
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Security & Governance.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Providing junior staff with high-level orchestration mandates rigorous administrative guardrails. The UHDC ensures that operational efficiency is tempered by absolute accountability and zero-trust architecture.
+        </p>
+        <a href="#architecture" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">EXPLORE FRAMEWORK</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-lock"></i> Authentication Gateway</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● SECURE</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] INITIALIZING RBAC PROTOCOLS...</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Validating technician identity...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; padding-left: 1.5rem;">UPN: admin@acmecorp.com</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Enforcing Pass-Through Authentication...</p>
+            <p style="color: var(--accent-green); margin-bottom: 1rem; padding-left: 1.5rem;">[OK] Microsoft Graph API Token Acquired.</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Checking Delegated Permissions...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem;">Scope: DeviceManagementManagedDevices.ReadWrite.All</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold;">[UHDC] Access Granted. Zero hidden telemetry confirmed.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="architecture" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Architectural Philosophy</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">The platform aligns operational efficiency with strict data sovereignty. The framework contains <strong>zero hidden telemetry</strong>, ensuring all organizational execution data, asset maps, and audit logs remain exclusively within your tenant’s controlled environment.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-id-badge"></i></div>
+            <h3 class="console-font">Identity-First RBAC</h3>
+            <p style="color: var(--text-secondary);">The UHDC eliminates secondary credential silos. It utilizes Pass-Through Authentication via the <code>Connect-MgGraph</code> module, operating strictly on Delegated Permissions. It cannot grant technicians any access they do not already natively possess.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-filter"></i></div>
+            <h3 class="console-font">Dynamic Domain Filtration</h3>
+            <p style="color: var(--text-secondary);">To mitigate cross-tenant data leakage in multi-agency environments, the engine programmatically extracts the technician’s UPN. It mathematically restricts all AD and Graph searches to their specific organizational unit.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-file-signature"></i></div>
+            <h3 class="console-font">Immutable Audit Trails</h3>
+            <p style="color: var(--text-secondary);">Every execution—from a Browser Reset to a Cloud LAPS extraction—is piped into a centralized, timestamped CSV database via SMB (Port 445). It programmatically stamps the technician’s identity and the target hardware ID for forensic review.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ACCESS HIERARCHY TABLE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <h2 class="console-font">Access Hierarchy & Authorization</h2>
+    <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 900px; margin-bottom: 2rem;">The UHDC does not use overarching application permissions or hidden service principals. Graph API requests are only authorized if the technician's account is already assigned the corresponding roles within the Microsoft 365/Intune portal.</p>
+
+    <table class="gov-table">
+        <thead>
+            <tr>
+                <th>Administrative Action</th>
+                <th>Integration Method</th>
+                <th>Required Graph API Scopes / Protocol</th>
+                <th>Network Ports</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: var(--text-primary); font-weight: 500;">Remote Wipe / Device Lock</td>
+                <td>Microsoft Graph API</td>
+                <td class="console-font" style="color: var(--accent-warning); font-size: 0.85rem;">DeviceManagementManagedDevices.ReadWrite.All</td>
+                <td class="console-font">443 (HTTPS)</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary); font-weight: 500;">MFA Reset / Add SMS</td>
+                <td>Microsoft Graph API</td>
+                <td class="console-font" style="color: var(--accent-warning); font-size: 0.85rem;">UserAuthenticationMethod.ReadWrite.All</td>
+                <td class="console-font">443 (HTTPS)</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary); font-weight: 500;">BitLocker Key Retrieval</td>
+                <td>Microsoft Graph API</td>
+                <td class="console-font" style="color: var(--accent-warning); font-size: 0.85rem;">BitlockerKey.Read.All</td>
+                <td class="console-font">443 (HTTPS)</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary); font-weight: 500;">Cloud LAPS Retrieval</td>
+                <td>Graph API (Beta)</td>
+                <td class="console-font" style="color: var(--accent-warning); font-size: 0.85rem;">DeviceLocalCredential.Read.All</td>
+                <td class="console-font">443 (HTTPS)</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary); font-weight: 500;">Account Unlock / Reset</td>
+                <td>Active Directory</td>
+                <td class="console-font" style="color: var(--accent-warning); font-size: 0.85rem;">LDAP / AD Permissions</td>
+                <td class="console-font">389/636 (LDAP/S)</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- FAQ / OPERATIONAL SAFETY -->
+<section style="border-bottom: none; padding-top: 2rem;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Operational Safety & Concurrency</h2>
+
+    <div class="faq-block">
+        <div class="faq-question">How does the UHDC handle the PowerShell "Double-Hop" problem securely?</div>
+        <div class="faq-answer">Operational governance is achieved through strict session isolation. Tools like "Remote Install" utilize PsExec under the <code>NT AUTHORITY\SYSTEM</code> context. By executing as SYSTEM, the target machine authenticates to the network as its computer account (<code>DOMAIN\COMPUTER$</code>), allowing it to pull installers from shares that standard WinRM sessions cannot reach, while keeping the execution completely hidden from the user in Session 0.</div>
+    </div>
+
+    <div class="faq-block">
+        <div class="faq-question">How is data integrity maintained during massive network sweeps?</div>
+        <div class="faq-answer">To ensure data integrity, the <code>GlobalNetworkMap</code> engine employs an <strong>Atomic Save</strong> operation. The script executes a save every 50 loops, writing to a temporary <code>.tmp</code> file and performing a byte-length health check before instantly swapping it with the live JSON database. This prevents database corruption during network drops and ensures a <code>.bak</code> duplicate is always available for recovery.</div>
+    </div>
+
+    <div class="faq-block">
+        <div class="faq-question">Does the console lock up during long executions?</div>
+        <div class="faq-answer">No. The UHDC utilizes <strong>Runspace Pools</strong>. This multi-threaded architecture ensures the graphical interface remains responsive while background threads handle intensive tasks like network scans or remote deployments. This ensures the technician remains in control of the console at all times, raising the floor of IT capability while significantly lowering the organizational risk profile.</div>
+    </div>
+</section>

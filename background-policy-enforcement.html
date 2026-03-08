@@ -1,0 +1,112 @@
+---
+layout: default
+title: "Background Policy Enforcement"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-green); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-shield-halved"></i> POLICY ADMINISTRATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Background Policy Enforcement.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Force an immediate Group Policy refresh on a remote endpoint without interrupting the user's workflow. Bypass the standard 90-minute Active Directory background refresh cycle instantly.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-green); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-green);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] FORCE GPUPDATE: LAPTOP-US-4829</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">[i] Connecting to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Running gpupdate /force /target:computer...</p>
+
+            <p style="color: var(--accent-green); font-weight: bold;">[UHDC SUCCESS] Computer policy update triggered successfully!</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Instant Remediation</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user is missing a newly deployed mapped network drive, or a security team just pushed an emergency firewall rule, you cannot afford to wait for Windows to check in naturally. This tool triggers the policy engine immediately.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Policy Engine Trigger</h3>
+            <p style="color: var(--text-secondary);">Executes the native <code>gpupdate.exe</code> utility over WinRM. It passes the <code>/force</code> flag to ignore optimization checks and re-download all applicable GPOs directly from the SYSVOL share.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-ghost"></i></div>
+            <h3 class="console-font">Asynchronous Detachment</h3>
+            <p style="color: var(--text-secondary);">Passes the critical <code>/wait:0</code> flag. This forces the executable to return control to the PowerShell pipeline immediately, preventing the console from hanging if a policy requires a reboot.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 class="console-font">Targeted Scope</h3>
+            <p style="color: var(--text-secondary);">Utilizes the <code>/target:computer</code> flag to limit the scope of the refresh. This ensures system-level changes (like LAPS, firewall rules, and machine-targeted software) apply cleanly and rapidly in Session 0.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-green); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic and specific command-line arguments required to safely trigger a background policy refresh over WinRM.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">gpupdate</span> <span class="param">/force</span> <span class="param">/target:computer</span> <span class="param">/wait:0</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
+            <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening an elevated Command Prompt, typing 'gpupdate /force', and waiting for the 'Computer Policy update has completed successfully' message.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why is the `/wait:0` flag so important?</div>
+        <div class="faq-answer">If a Group Policy update includes a software installation or a core system change, <code>gpupdate</code> will prompt the user (or the hidden background session) with <em>"Certain policies require a reboot... Do you want to restart now (Y/N)?"</em>. If this happens over WinRM without <code>/wait:0</code>, the PowerShell pipeline will hang indefinitely waiting for an answer, freezing the UHDC. <code>/wait:0</code> forces the command to return control to the console immediately without waiting for the policy engine to finish processing.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why does it use `/target:computer` instead of updating both User and Computer policies?</div>
+        <div class="faq-answer">Speed and reliability. User policies are often tied to the specific user's active session token. Running a full <code>gpupdate</code> as a background administrator via WinRM can sometimes fail to apply User-targeted policies correctly because it executes in Session 0. Targeting just the Computer policy ensures system-level changes apply cleanly.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Will this force the user's computer to reboot?</div>
+        <div class="faq-answer">No. Even if a policy requires a reboot to take effect, running it silently in the background with the <code>/wait:0</code> flag will simply queue the policy to apply the next time the user naturally restarts their machine. It will not interrupt their current session.</div>
+    </div>
+</section>
