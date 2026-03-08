@@ -1,6 +1,30 @@
 ---
 layout: default
 title: "Platform Architecture"
+custom_css: |
+  .media-showcase {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin: 3rem auto;
+      max-width: 1000px;
+  }
+  .media-header {
+      background: rgba(0,0,0,0.3);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+  }
+  .mac-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+  }
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
 ---
 
 <!-- HERO SECTION -->
@@ -69,5 +93,43 @@ title: "Platform Architecture"
             <div class="console-font" style="color: var(--accent-green); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">View Framework ></div>
         </a>
 
+    </div>
+</section>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<section style="border-bottom: none; padding-top: 2rem;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+        <h2 class="console-font">Topology & Protocol Routing</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">The UHDC acts as a centralized routing engine, translating technician intent into the appropriate underlying protocol (WinRM, RPC, LDAP, or REST) to interact securely with your on-premises and cloud infrastructure.</p>
+    </div>
+
+    <div class="media-showcase">
+        <div class="media-header">
+            <div class="mac-dot dot-red"></div>
+            <div class="mac-dot dot-yellow"></div>
+            <div class="mac-dot dot-green"></div>
+            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC_Protocol_Topology.png</span>
+        </div>
+        <!-- Ensure your image is saved as 'uhdc-architecture.png' in the root folder -->
+        <img src="{{ '/uhdc-architecture.png' | relative_url }}" alt="UHDC Architecture Diagram" style="width: 100%; height: auto; display: block; background: #fff;">
+    </div>
+</section>
+
+<!-- ENTERPRISE SCALABILITY BLOCK -->
+<section style="border-bottom: none; padding-top: 2rem;">
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 1) 100%); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--border-radius); padding: 3rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; box-shadow: var(--shadow-md);">
+        <div style="text-align: center;">
+            <i class="fa-solid fa-server" style="font-size: 5rem; color: var(--accent-blue); opacity: 0.8;"></i>
+        </div>
+        <div>
+            <div class="console-font" style="display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); margin-bottom: 1rem;">INFINITE CONCURRENCY</div>
+            <h2 class="console-font" style="margin-bottom: 1rem; border: none; padding: 0;">Built for Massive Scale</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                The UHDC is engineered to adapt to your environment. For small-to-medium enterprises, the platform utilizes a highly efficient, flat-file JSON database and an SMB drop-box to track asset telemetry with zero infrastructure overhead.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
+                For global, multi-domain forests exceeding <strong>20,000 endpoints</strong>, the UHDC seamlessly pivots to a <strong>Direct-to-SQL telemetry pipeline</strong>. This enterprise architecture eliminates file-lock bottlenecks during morning logon storms, utilizing Active Directory Computer Accounts to authenticate directly to your SQL clusters for microsecond lookups at infinite scale.
+            </p>
+        </div>
     </div>
 </section>
