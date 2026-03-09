@@ -1,0 +1,115 @@
+---
+layout: default
+title: "Automated Warranty Routing"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-laptop-medical"></i> HARDWARE DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Automated Warranty Routing.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Stop asking users to read tiny stickers over the phone. Query hardware CIM data to extract serial numbers and automatically route technicians to the correct vendor warranty portal in seconds.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WMI / CIM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] WARRANTY LOOKUP: LAPTOP-US-4829</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Querying Hardware Info...</p>
+            <p style="color: var(--text-muted);"> > Make:   Dell Inc.</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Serial: 8J92XQ3</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold; margin-bottom: 0.2rem;">[UHDC SUCCESS] Opening Warranty Page in your default browser...</p>
+            <p style="color: var(--text-muted); word-break: break-all;">> Routing to: https://www.dell.com/support/home/en-us/product-support/servicetag/8J92XQ3/overview</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Accelerate Hardware Replacements</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user reports physical hardware damage, verifying their active warranty or accidental damage protection plan is the critical first step. This tool eliminates typos and frustration by automating the entire lookup process.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="console-font">Hardware Telemetry</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote session over Port 5985 (HTTP) to query specific WMI classes: <code>Win32_BIOS</code> (to extract the Serial Number) and <code>Win32_ComputerSystem</code> (to extract the Manufacturer).</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-code-branch"></i></div>
+            <h3 class="console-font">Dynamic Routing Logic</h3>
+            <p style="color: var(--text-secondary);">Evaluates the manufacturer string (e.g., matching "Hewlett-Packard" to HP) and concatenates the serial number into the specific REST API or search query URL format required by that vendor's website.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            <h3 class="console-font">Local Shell Handoff</h3>
+            <p style="color: var(--text-secondary);">Executes a <code>Start-Process</code> command, which instructs the technician's local Windows OS to open the constructed link directly in their default web browser, bypassing manual copy-pasting.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the motherboard's embedded serial number and launch the vendor portal.
+        </p>
+
+        <div class="mock-code">
+            <span class="var">$bios</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_BIOS</span><br>
+            <span class="var">$cs</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_ComputerSystem</span><br>
+            <span class="var">$url</span> = <span class="str">"https://www.dell.com/support/home/en-us/product-support/servicetag/$($bios.SerialNumber)/overview"</span><br>
+            <span class="cmd">Start-Process</span> <span class="var">$url</span>
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Flipping the laptop over to read the tiny printed sticker on the bottom chassis, opening a web browser, navigating to the vendor's support page, and manually typing the alphanumeric serial number into the search box.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Which hardware vendors are currently supported by the auto-routing logic?</div>
+        <div class="faq-answer">The script currently supports automatic URL construction for <strong>Dell</strong>, <strong>Lenovo</strong>, <strong>HP</strong>, and <strong>Microsoft Surface</strong> devices. If a different manufacturer is detected (e.g., Panasonic or a custom-built PC), the script will still display the serial number in the console for manual lookup, but it will not attempt to open a web browser.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the script warn me about Microsoft Surface devices?</div>
+        <div class="faq-answer">Unlike Dell or Lenovo, which allow public, unauthenticated queries against their warranty databases, Microsoft typically requires an administrator to log into the "Microsoft 365 admin center" or "Surface Support Portal" to view warranty entitlements. The script will route you to the correct login page, but it cannot bypass the authentication requirement.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: What happens if the WMI query fails?</div>
+        <div class="faq-answer">If the target machine has a corrupted WMI repository or a strict firewall blocking Port 5985, the script will fail gracefully. It will output an error to the console suggesting <em>"Possible cause: Firewall, RPC error, or Access Denied,"</em> allowing the technician to pivot to a different troubleshooting method.</div>
+    </div>
+</section>

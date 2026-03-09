@@ -1,0 +1,130 @@
+---
+layout: default
+title: "Multi-Vector Identity Locator"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-purple); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-magnifying-glass-location"></i> CONTEXT-AWARE LOCATOR
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Multi-Vector Identity Locator.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Find any user on the network instantly. This intelligence engine utilizes a cascading fallback logic, pivoting through historical JSON telemetry, Active Directory attributes, and targeted WMI sweeps to locate users who are hot-desking or using shared kiosks.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-purple); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-purple);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> Intelligence Engine</span>
+            <span style="color: var(--accent-warning); font-size: 0.8rem;">● SEARCHING</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] FIND USER ON NETWORK: jsmith</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[1] Resolving AD identity...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; padding-left: 1.5rem;">> Resolved: John Smith (OU=Accounting)</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[2] Checking historical telemetry...</p>
+            <p style="color: var(--accent-danger); margin-bottom: 1rem; padding-left: 1.5rem;">> LAPTOP-US-4829 is OFFLINE. Fallback initiated.</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold; margin-bottom: 0.2rem;">[3] OU Pivot: Scanning subnet OU=Computers,OU=Accounting...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem;">> Scanning 42 computers... (Match found on #14)</p>
+
+            <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.2rem;">[UHDC SUCCESS] DESKTOP-HQ-9912 (jsmith)</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">[INTEL] Auto-Filled Target PC to Action panels.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Cascading Fallback Logic</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user calls in from a shared conference room and doesn't know the computer name, you cannot remote in. Scanning the entire 5,000-node domain takes too long. This engine uses context to narrow the search radius, finding the user in seconds.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3 class="console-font">Vector 1: History Check</h3>
+            <p style="color: var(--text-secondary);">The engine first checks the central <code>UserHistory.json</code> database. It sends a rapid WMI query to the user's last known PC. If they are still there, the search finishes instantly.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-code-branch"></i></div>
+            <h3 class="console-font">Vector 2: OU Pivoting</h3>
+            <p style="color: var(--text-secondary);">If the user's primary PC is offline, it parses their AD profile. If they work in the "Accounting" OU, it dynamically rewrites the LDAP query to pull a list of computers exclusively located in the Accounting department.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-radar"></i></div>
+            <h3 class="console-font">Vector 3: Rapid Polling</h3>
+            <p style="color: var(--text-secondary);">It iterates through the narrowed list of department PCs using a highly aggressive 500ms ICMP ping timeout to skip offline machines, followed by a <code>Win32_ComputerSystem</code> WMI query to find the active user.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(139, 92, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-purple); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 350 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the multi-vector PowerShell 5.1 logic used to pivot from a stale JSON record to a targeted Active Directory subnet sweep.
+        </p>
+
+        <div class="mock-code">
+            <span class="text-muted"># Vector 1: Check Historical JSON Database</span><br>
+            <span class="var">$match</span> = <span class="var">$history</span> | <span class="cmd">Where-Object</span> User -eq <span class="var">$TargetUser</span><br>
+            <span class="cmd">if</span> (<span class="cmd">Test-Connection</span> <span class="var">$match</span>.Computer <span class="param">-Quiet</span>) { <span class="cmd">return</span> <span class="var">$match</span>.Computer }<br><br>
+
+            <span class="text-muted"># Vector 2: Pivot to User's AD Department (OU)</span><br>
+            <span class="var">$ou</span> = (<span class="cmd">Get-ADUser</span> <span class="var">$TargetUser</span> <span class="param">-Properties</span> DistinguishedName).DistinguishedName<br>
+            <span class="var">$pcs</span> = <span class="cmd">Get-ADComputer</span> <span class="param">-Filter</span> * <span class="param">-SearchBase</span> <span class="var">$ou</span><br><br>
+
+            <span class="text-muted"># Vector 3: Execute Targeted WMI Sweep</span><br>
+            <span class="cmd">foreach</span> (<span class="var">$pc</span> <span class="cmd">in</span> <span class="var">$pcs</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">if</span> ((<span class="cmd">Get-CimInstance</span> <span class="str">Win32_ComputerSystem</span> <span class="param">-ComputerName</span> <span class="var">$pc</span>).UserName -match <span class="var">$TargetUser</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">return</span> <span class="var">$pc</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-purple); background: rgba(139, 92, 246, 0.05);">
+            <h4 style="color: var(--accent-purple);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Checking your notes to see where the user usually sits. If they aren't there, looking up their department in the directory, walking to that specific floor, and checking the lock screens of the active computers in that area.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: Why doesn't the script just scan the entire Active Directory environment?</div>
+        <div class="faq-answer">Performance and safety. Scanning 5,000 computers sequentially via WMI could take 15 to 30 minutes, which is useless when a user is waiting on the phone. Furthermore, aggressive global WMI sweeps can trigger intrusion detection systems (IDS) or be flagged as lateral movement by security teams. By pivoting off the user's OU, we reduce the scan target to a highly localized, logical subnet, returning results in seconds.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: What happens if the user's AD profile doesn't have a clean OU structure?</div>
+        <div class="faq-answer">The script is designed to fail safely. If it cannot determine a logical, narrowed scope to scan (e.g., the user is in the default <code>CN=Users</code> container), it will abort the operation and display: <code>[X] ABORTING: User context (OU) not found. Global Scanning is disabled for performance/safety.</code> This prevents the script from accidentally initiating a domain-wide sweep.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: Does this tool find users who are connected via VPN or Remote Desktop?</div>
+        <div class="faq-answer">Yes. The <code>Win32_ComputerSystem</code> WMI class registers the primary user logged into the Windows session, regardless of whether they are physically at the keyboard or connected via a corporate VPN tunnel, as long as the endpoint is reachable over the network.</div>
+    </div>
+</section>

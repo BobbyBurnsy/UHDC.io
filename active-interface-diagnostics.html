@@ -1,0 +1,127 @@
+---
+layout: default
+title: "Active Interface Diagnostics"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-network-wired"></i> NETWORK DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Active Interface Diagnostics.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Cut through the noise of standard command-line tools. Programmatically filter disconnected adapters and APIPA addresses to deliver a clean, correlated view of active IPv4 interfaces, MAC addresses, and negotiated link speeds.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] NETWORK INTERFACE DIAGNOSTICS</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">--- Active Interfaces ---</p>
+
+            <p style="color: var(--accent-green); margin-bottom: 0.2rem; font-weight: bold;"> > Adapter: Wi-Fi</p>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 2px; margin-bottom: 1rem; padding-left: 1.5rem;">
+                <span style="color: var(--text-muted);">Desc:</span> <span style="color: var(--text-secondary);">Intel(R) Wi-Fi 6 AX201 160MHz</span>
+                <span style="color: var(--text-muted);">IP:</span> <span style="color: var(--text-secondary);">10.50.12.104</span>
+                <span style="color: var(--text-muted);">MAC:</span> <span style="color: var(--text-secondary);">A1-B2-C3-D4-E5-F6</span>
+                <span style="color: var(--text-muted);">Speed:</span> <span style="color: var(--accent-warning);">866.7 Mbps</span>
+            </div>
+
+            <p style="color: var(--accent-green); margin-bottom: 0.2rem; font-weight: bold;"> > Adapter: Ethernet 2</p>
+            <div style="display: grid; grid-template-columns: 60px 1fr; gap: 2px; padding-left: 1.5rem;">
+                <span style="color: var(--text-muted);">Desc:</span> <span style="color: var(--text-secondary);">Dell USB-C Dock Ethernet</span>
+                <span style="color: var(--text-muted);">IP:</span> <span style="color: var(--text-secondary);">10.50.14.22</span>
+                <span style="color: var(--text-muted);">MAC:</span> <span style="color: var(--text-secondary);">98-76-54-32-10-FE</span>
+                <span style="color: var(--text-muted);">Speed:</span> <span style="color: var(--accent-blue);">1 Gbps</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Eliminate Command-Line Noise</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">If you ask a user to open a command prompt and type <code>ipconfig /all</code>, they will be overwhelmed by a wall of text containing dozens of disconnected Bluetooth adapters, virtual VPN tunnels, and IPv6 addresses. This engine extracts exactly what you need in seconds.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-server"></i></div>
+            <h3 class="console-font">Adapter Enumeration</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote PowerShell session over Port 5985 (HTTP). It executes <code>Get-NetAdapter</code>, strictly filtering for interfaces where the operational status equals 'Up'.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-filter"></i></div>
+            <h3 class="console-font">Intelligent Filtration</h3>
+            <p style="color: var(--text-secondary);">Executes <code>Get-NetIPAddress</code>, restricting the query to the IPv4 address family. It uses a RegEx filter to explicitly drop the local loopback (127.0.0.1) and APIPA (169.254.x.x) subnets.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-link"></i></div>
+            <h3 class="console-font">Data Correlation</h3>
+            <p style="color: var(--text-secondary);">Iterates through the valid IP addresses and matches their Interface Alias to the corresponding physical or virtual adapter object to extract the MAC Address and negotiated Link Speed.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 100 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the NetTCPIP module and filter out irrelevant network data.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$adapters</span> = <span class="cmd">Get-NetAdapter</span> | <span class="cmd">Where-Object</span> Status -eq <span class="str">'Up'</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$ips</span> = <span class="cmd">Get-NetIPAddress</span> <span class="param">-AddressFamily</span> IPv4 | <span class="cmd">Where-Object</span> IPAddress -notmatch <span class="str">'169.254|127.0'</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Correlate IP to Adapter MAC/Speed</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening an elevated Command Prompt and typing 'ipconfig /all', or pressing Win+R, typing 'ncpa.cpl' (Network Connections), double-clicking the active adapter, and clicking 'Details...'.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the script filter out 169.254.x.x addresses?</div>
+        <div class="faq-answer">Addresses starting with <code>169.254</code> are APIPA (Automatic Private IP Addressing) addresses. Windows assigns these to an adapter when it is configured for DHCP but cannot reach a DHCP server to get a valid lease. Because these addresses cannot route traffic to the internet or the corporate network, they are considered "noise" in standard connectivity troubleshooting and are filtered out to keep the console clean.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Does this tool show IPv6 addresses?</div>
+        <div class="faq-answer">No. By design, the script uses the <code>-AddressFamily IPv4</code> parameter. In most enterprise environments, internal routing, DHCP reservations, and firewall rules are still heavily dependent on IPv4. Filtering out the lengthy IPv6 strings ensures the output remains highly readable in the technician's Heads Up Display.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: What does "Link Speed" tell me?</div>
+        <div class="faq-answer">Link Speed is the negotiated physical connection rate between the computer and the switch/access point. If a user is on a wired connection but the Link Speed says <code>100 Mbps</code> instead of <code>1 Gbps</code>, it usually indicates a physically damaged Ethernet cable or a misconfigured port on the network switch. If they are on Wi-Fi and the speed is very low, they are likely too far from the access point.</div>
+    </div>
+</section>

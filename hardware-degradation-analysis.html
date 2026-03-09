@@ -1,0 +1,129 @@
+---
+layout: default
+title: "Hardware Degradation Analysis"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-battery-half"></i> HARDWARE DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Hardware Degradation Analysis.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Real-time hardware telemetry and graphical degradation visualization. Instantly calculate exact milliwatt-hour (mWh) metrics to diagnose failing laptop batteries over the network.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WMI / CIM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] BATTERY HEALTH DIAGNOSTICS</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">[i] Querying battery telemetry via WinRM...</p>
+            <p style="color: var(--accent-blue); font-weight: bold; margin-bottom: 1rem;">[UHDC SUCCESS] Battery telemetry retrieved.</p>
+
+            <!-- Embedded HTML Battery Bar Mockup -->
+            <div style="background: var(--bg-base); padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); border-left: 4px solid var(--accent-warning); margin-bottom: 10px; font-family: 'Inter', sans-serif; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
+                <div style="color: var(--text-primary); font-weight: bold; margin-bottom: 12px; font-size: 1rem;"><i class="fa-solid fa-battery-half"></i> Hardware Battery Health</div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem;">
+                    <span style="color: var(--text-muted);">Design Capacity:</span>
+                    <span style="color: var(--text-primary);">68,004 mWh</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.85rem;">
+                    <span style="color: var(--text-muted);">Full Charge Capacity:</span>
+                    <span style="color: var(--text-primary);">42,162 mWh</span>
+                </div>
+
+                <div style="width: 100%; background: var(--bg-surface); border-radius: 6px; height: 10px; overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border-color);">
+                    <div style="width: 62%; background: var(--accent-warning); height: 100%; border-radius: 6px;"></div>
+                </div>
+                <div style="text-align: right; color: var(--accent-warning); font-weight: bold; font-size: 0.9rem;">62% Health</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Bypass Legacy HTML Reports</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a remote user reports their laptop battery is draining rapidly, standard protocol requires walking them through generating a hidden <code>powercfg</code> HTML report and emailing it to the help desk. This engine extracts the raw data directly into your dashboard.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="console-font">Telemetry Extraction</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote PowerShell session over Port 5985 (HTTP). It queries the hidden <code>root\wmi</code> namespace to extract the exact <code>DesignedCapacity</code> and <code>FullChargedCapacity</code> properties.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-calculator"></i></div>
+            <h3 class="console-font">Data Transformation</h3>
+            <p style="color: var(--text-secondary);">Calculates the degradation percentage in memory. It dynamically assigns a status color (Green for >75%, Yellow for 50-75%, Red for <50%) based on the mathematical result.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-code"></i></div>
+            <h3 class="console-font">Dynamic UI Injection</h3>
+            <p style="color: var(--text-secondary);">Constructs a raw HTML/CSS string containing the formatted data and progress bar, outputting it directly into the web dashboard's telemetry stream for immediate visual triage.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the hidden WMI battery namespaces and calculate the degradation percentage.
+        </p>
+
+        <div class="mock-code">
+            <span class="var">$design</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-Namespace</span> <span class="str">root\wmi</span> <span class="param">-ClassName</span> <span class="str">BatteryStaticData</span><br>
+            <span class="var">$full</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-Namespace</span> <span class="str">root\wmi</span> <span class="param">-ClassName</span> <span class="str">BatteryFullChargedCapacity</span><br>
+            <span class="var">$health</span> = (<span class="var">$full</span>.FullChargedCapacity / <span class="var">$design</span>.DesignedCapacity) * <span class="str">100</span>
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening an elevated Command Prompt, typing 'powercfg /batteryreport', opening the generated HTML file in a browser, and manually doing the math between Design Capacity and Full Charge Capacity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why did we stop using the native `powercfg` command?</div>
+        <div class="faq-answer">The legacy <code>powercfg</code> method required generating a physical file on the user's C: drive, transferring it over the network via SMB (Port 445), and opening a new browser tab on the technician's machine. This was slower, prone to file-lock errors, and required broader firewall rules. Querying WMI directly is faster, requires only WinRM (Port 5985), and provides a vastly superior user experience within the dashboard.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: What happens if I run this workflow against a desktop computer instead of a laptop?</div>
+        <div class="faq-answer">Desktop motherboards lack the necessary battery API telemetry. The WinRM connection will succeed, but the WMI query will return null. The engine handles this gracefully by catching the error and displaying: <em>"No battery data found. (Is this a desktop PC?)"</em> in the console.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: At what percentage should a battery be physically replaced?</div>
+        <div class="faq-answer">While this depends on your specific organization's hardware lifecycle policies, a battery that falls below <strong>50% to 60%</strong> of its original Design Capacity will typically cause noticeable workflow disruptions for the user (e.g., dying within 1-2 hours off the charger) and warrants a warranty claim or replacement.</div>
+    </div>
+</section>

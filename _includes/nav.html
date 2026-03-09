@@ -1,0 +1,13 @@
+<nav>
+    <div class="nav-container">
+        <a href="{{ '/' | relative_url }}" class="nav-logo console-font">UHDC.io</a>
+        <div class="nav-links console-font">
+            <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">HOME</a>
+            <a href="{{ '/about/' | relative_url }}" class="{% if page.url contains '/about' %}active{% endif %}">ABOUT</a>
+            <a href="{{ '/capabilities/' | relative_url }}" class="{% if page.url contains '/capabilities' %}active{% endif %}">CAPABILITIES</a>
+            <a href="{{ '/governance/' | relative_url }}" class="{% if page.url contains '/governance' %}active{% endif %}">GOVERNANCE</a>
+            <a href="{{ '/pricing/' | relative_url }}" class="{% if page.url contains '/pricing' %}active{% endif %}">PRICING</a>
+            <a href="{{ site.github_repo }}" target="_blank" class="btn-nav">GITHUB REPO</a>
+        </div>
+    </div>
+</nav>

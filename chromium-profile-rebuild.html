@@ -1,0 +1,130 @@
+---
+layout: default
+title: "Chromium Profile Rebuild"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-brands fa-chrome"></i> PROFILE REMEDIATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Chromium Profile Rebuild.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Zero-touch profile remediation with automated data preservation. Safely reset corrupted Google Chrome and Microsoft Edge profiles without permanently losing the user's local bookmarks.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] CHROMIUM PROFILE ORCHESTRATION</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Securing bookmarks for jsmith...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > Terminating browser processes...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Purging AppData and restoring bookmarks...</p>
+
+            <p style="color: var(--accent-warning); font-weight: bold;">[UHDC SUCCESS] Chromium profiles rebuilt successfully via WinRM!</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Automated Data Rescue</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When standard cache-clearing protocols fail, a complete profile wipe is required. Executing this manually risks the permanent loss of locally stored bookmarks. This engine orchestrates a unified, multi-step sequence to rescue data before dropping the corrupted directories.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Unified Execution Pipeline</h3>
+            <p style="color: var(--text-secondary);">Establishes a single WinRM session to execute the entire 4-step remediation locally on the target. This drastically reduces network overhead compared to legacy scripts that pull files back and forth over SMB.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bookmark"></i></div>
+            <h3 class="console-font">Local Data Rescue</h3>
+            <p style="color: var(--text-secondary);">Safely copies the user's SQLite Bookmarks files to a secure temporary directory (<code>C:\Windows\Temp</code>) on the target machine before forcefully dropping all active memory locks on the frozen browser.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="console-font">Resilient Fallback</h3>
+            <p style="color: var(--text-secondary);">If the endpoint's firewall blocks WinRM, the engine automatically encodes the entire remediation payload into Base64 and deploys it via PsExec under the <code>SYSTEM</code> context to guarantee execution.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-warning); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 250 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 pipeline required to safely backup, terminate, purge, and restore a user's browser profile locally on the target machine.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 1. Backup to local Temp directory</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Copy-Item</span> <span class="str">"C:\Users\$User\...\Bookmarks"</span> <span class="str">"C:\Windows\Temp\BM_Backup"</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 2. Kill locked processes</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Stop-Process</span> <span class="param">-Name</span> <span class="str">"chrome"</span>, <span class="str">"msedge"</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 3. Purge AppData & Restore Bookmarks</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">"C:\Users\$User\...\User Data"</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Copy-Item</span> <span class="str">"C:\Windows\Temp\BM_Backup"</span> <span class="str">"C:\Users\$User\...\Bookmarks"</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+            <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening Task Manager to kill frozen browsers, navigating to %LocalAppData%, copying the Bookmarks file to the desktop, deleting the 'User Data' folders manually, and pasting the Bookmarks file back into the new folder.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why does this workflow require the technician to enter BOTH the Target PC and the Username?</div>
+        <div class="faq-answer">Because the script executes locally on the target machine as a background administrative account (or the <code>SYSTEM</code> account via PsExec). It cannot rely on environmental variables like <code>%LocalAppData%</code> because that would point to the administrator's profile, not the user's. It needs the specific AD username to explicitly build the correct <code>C:\Users\Username\AppData\...</code> path.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why not just copy the bookmarks across the network to the technician's PC?</div>
+        <div class="faq-answer">Transferring files back and forth over the network via SMB is slow and frequently blocked by modern endpoint firewalls. By backing up the bookmarks to a local temporary folder on the target machine itself, the entire operation executes in milliseconds and requires only a single WinRM or RPC port to be open.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Will the user lose their saved passwords or browser extensions?</div>
+        <div class="faq-answer">Yes, any locally cached data outside of bookmarks (like history, extensions, and local passwords) is purged. However, if the user is signed into Google Sync or Microsoft Enterprise Sync, their extensions and passwords will automatically pull back down from the cloud the moment they reopen the browser. This module specifically rescues the <em>local</em> bookmarks for users who do not utilize cloud sync.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Can this be run while the user is actively working?</div>
+        <div class="faq-answer">It can, but the user will see their browser suddenly vanish from their screen. It is best practice to send them a quick "Net Send" message via the console or call them to say, <em>"I am going to quickly reset your browser now"</em> before executing the workflow.</div>
+    </div>
+</section>

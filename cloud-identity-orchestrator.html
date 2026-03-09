@@ -1,0 +1,93 @@
+---
+layout: default
+title: "Cloud Identity Orchestrator"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-brands fa-microsoft"></i> ENTRA ID & INTUNE INTEGRATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Cloud Identity Management. Instantly.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Bypass the slow Microsoft Endpoint Manager portals. Retrieve BitLocker keys, Cloud LAPS passwords, and reset MFA methods in seconds using the Microsoft Graph API—all while keeping the user on the line.
+        </p>
+        <a href="#capabilities" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">EXPLORE CAPABILITIES</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> Graph API Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] Scanning Azure AD for user: jsmith@acmecorp.com...</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;"> > [OK] Found 2 managed devices.</p>
+
+            <p style="color: var(--text-primary); margin-bottom: 0.5rem;">[UHDC] Querying Entra ID for keys...</p>
+            <p style="color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold;"> > RECOVERY KEY: 482910-394812-592810-492810-592810-392810</p>
+
+            <p style="color: var(--text-primary); margin-bottom: 0.5rem;">[UHDC] Adding +15550001111 to account...</p>
+            <p style="color: var(--accent-blue); font-weight: bold;">[UHDC SUCCESS] +15550001111 added as primary SMS MFA.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="capabilities" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Accelerate Live Call Resolution</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user is locked out by a BitLocker screen or a broken Authenticator app, every second counts. The Cloud Identity Manager puts the most critical Entra ID and Intune remediation tools exactly where you need them.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-key"></i></div>
+            <h3 class="console-font">Instant Credential Access</h3>
+            <p style="color: var(--text-secondary);">Instantly retrieve 48-digit BitLocker recovery keys and rotating Cloud LAPS (Local Administrator Password Solution) credentials directly from the Graph API without navigating web portals.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3 class="console-font">MFA Remediation</h3>
+            <p style="color: var(--text-secondary);">Help executives set up new phones instantly. View registered authentication methods, clear broken Microsoft Authenticator links, or inject a new cell phone number for SMS MFA directly into their profile.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-satellite-dish"></i></div>
+            <h3 class="console-font">MDM Device Control</h3>
+            <p style="color: var(--text-secondary);">Execute critical Mobile Device Management commands. Force an immediate Intune policy sync, remotely wipe lost/stolen devices, or clear forgotten passcodes on agency-issued iOS and Android devices.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECURITY & GOVERNANCE BLOCK -->
+<section style="border-bottom: none; padding-top: 0;">
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 1) 100%); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--border-radius); padding: 3rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; box-shadow: var(--shadow-md);">
+        <div style="text-align: center;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 5rem; color: var(--accent-green); opacity: 0.8;"></i>
+        </div>
+        <div>
+            <div class="console-font" style="display: inline-block; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 1rem;">ZERO-TRUST ARCHITECTURE</div>
+            <h2 class="console-font" style="margin-bottom: 1rem; border: none; padding: 0;">Identity-First RBAC</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                The UHDC does not use overarching application permissions or hidden service principals. It utilizes <strong>Pass-Through Authentication</strong> via the <code>Connect-MgGraph</code> module.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
+                Operating strictly on <strong>Delegated Permissions</strong>, the tool guarantees that it cannot grant technicians any access, rights, or capabilities they do not already natively possess within your Microsoft 365 tenant. If a Tier 1 tech lacks the Intune rights to wipe a phone, the API call is securely rejected.
+            </p>
+        </div>
+    </div>
+
+    <!-- DYNAMIC DOMAIN FILTRATION -->
+    <div style="margin-top: 3rem; background: rgba(255,255,255,0.02); padding: 2rem; border-radius: var(--border-radius); border-left: 4px solid var(--accent-warning);">
+        <h3 class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem;"><i class="fa-solid fa-filter"></i> Dynamic Domain Filtration</h3>
+        <p style="color: var(--text-secondary); line-height: 1.6;">
+            To mitigate the risk of cross-tenant data leakage in multi-agency environments, the engine programmatically extracts the technician’s User Principal Name (UPN). It mathematically restricts all Azure AD and Graph searches to the technician’s specific organizational unit, effectively partitioning data before it ever reaches the UI.
+        </p>
+    </div>
+</section>

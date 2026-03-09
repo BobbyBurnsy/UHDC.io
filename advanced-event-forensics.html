@@ -1,0 +1,151 @@
+---
+layout: default
+title: "Advanced Event Forensics"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-file-lines"></i> FORENSIC RETRIEVAL
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Advanced Event Forensics.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Deep-scan string matching and rapid log retrieval—without leaving the dashboard. Instantly identify application crashes and kernel panics across the network using a highly resilient execution pipeline.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE EVENT LOG DIAGNOSTICS</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;"> > Deep searching last 10,000 events for keyword: 'bugcheck'...</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold; margin-bottom: 0.5rem;">[UHDC SUCCESS] Found 3 matching logs via WinRM.</p>
+
+            <!-- Embedded HTML Table Mockup -->
+            <div style="margin-bottom: 1rem; max-height: 180px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-base); font-family: 'Inter', sans-serif;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; text-align: left;">
+                    <thead style="position: sticky; top: 0; background: var(--bg-surface); color: var(--accent-blue); box-shadow: var(--shadow-sm);">
+                        <tr>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Time</th>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Level</th>
+                            <th style="padding: 8px; border-bottom: 1px solid var(--border-color);">Provider</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 6px; color: var(--text-muted);">14:22:01</td>
+                            <td style="padding: 6px; color: var(--accent-danger); font-weight: bold;">Critical</td>
+                            <td style="padding: 6px; color: var(--text-secondary);">Kernel-Power</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 6px; color: var(--text-muted);">14:21:58</td>
+                            <td style="padding: 6px; color: var(--accent-danger); font-weight: bold;">Error</td>
+                            <td style="padding: 6px; color: var(--text-secondary);">BugCheck</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 6px; color: var(--text-muted);">14:21:55</td>
+                            <td style="padding: 6px; color: var(--text-primary); font-weight: bold;">Info</td>
+                            <td style="padding: 6px; color: var(--text-secondary);">Windows Error Reporting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">> Full dataset saved to: C:\UHDC\Logs\EventLogs_LAPTOP-US-4829_20260302.csv</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Bypass the Event Viewer GUI</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When an application silently crashes or a laptop blue-screens, standard protocol requires remote-controlling the machine and manually digging through the slow Windows Event Viewer. This engine extracts the exact faulting module in seconds.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-network-wired"></i></div>
+            <h3 class="console-font">Resilient Execution Pipeline</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote session over Port 5985 (WinRM) to execute the query locally on the target. If endpoint firewalls block WinRM, the engine seamlessly falls back to a Base64-encoded payload deployed via PsExec.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-table-list"></i></div>
+            <h3 class="console-font">Dynamic UI Injection</h3>
+            <p style="color: var(--text-secondary);">Packages the raw event objects into a compressed JSON string, transmits it back to the console, and pipes it into a dynamic HTML <code>&lt;table&gt;</code> for immediate, color-coded visual triage.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-file-csv"></i></div>
+            <h3 class="console-font">Silent CSV Backup</h3>
+            <p style="color: var(--text-secondary);">Simultaneously serializes the full, un-truncated dataset to a local, timestamped CSV file in your <code>C:\UHDC\Logs</code> directory to ensure deep forensic review is available if the UI snippet isn't enough.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 200 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query remote event logs, package them into JSON, and handle firewall fallbacks.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$json</span> = <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> <span class="var">$Payload</span><br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$json</span> = <span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening Event Viewer (eventvwr.msc), filtering the System and Application logs for Critical/Error events, or using the 'Find' feature to search for a specific application crash.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: What network ports are required for this tool to function?</div>
+        <div class="faq-answer">The engine primarily relies on <strong>Port 5985 (WinRM/HTTP)</strong> to execute the query locally on the target machine, which is significantly faster and more reliable than pulling raw logs across the network. If WinRM is blocked, it falls back to <strong>Port 445 (SMB)</strong> and <strong>Port 135 (RPC)</strong> to deploy the PsExec payload.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the deep scan limit the search to the last 10,000 events?</div>
+        <div class="faq-answer">Windows Event logs can easily contain millions of entries. Attempting to parse the entire log can cause severe pipeline lag, memory spikes, and UI lockups. A 10,000-event buffer is the perfect architectural balance—it safely captures recent forensic data while maintaining a sub-10-second response time for the technician.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the dashboard table only show 50 logs, but the CSV has all of them?</div>
+        <div class="faq-answer">Browser DOM performance is highly sensitive to massive HTML tables. Flooding the web UI with thousands of multiline error strings would cause the interface to freeze and ruin the user experience. We limit the "Heads Up Display" to the top 50 results for immediate triage, and export the full, un-truncated dataset to CSV for deep forensic review.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Does this query the remote 'Security' log too?</div>
+        <div class="faq-answer">No, it specifically targets the 'System' and 'Application' logs. The 'Security' log is heavily restricted, often requiring elevated Domain Admin auditing privileges to read remotely. Furthermore, it is typically flooded with thousands of routine logon/logoff audits, which dramatically slows down query times for standard Tier 1/Tier 2 troubleshooting.</div>
+    </div>
+</section>

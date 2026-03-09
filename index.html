@@ -1,0 +1,158 @@
+---
+layout: default
+title: "Zero-Friction IT Support"
+custom_css: |
+  .media-showcase {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin: 3rem auto;
+      max-width: 1000px;
+  }
+  .media-header {
+      background: rgba(0,0,0,0.3);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+  }
+  .mac-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+  }
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
+
+  .cta-block {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 1) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--border-radius);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+      box-shadow: var(--shadow-md);
+  }
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="display: inline-block; color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 1px; background: rgba(16, 185, 129, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
+            <i class="fa-solid fa-check-circle"></i> 100% FREE FOR TEAMS UNDER 1,000 ENDPOINTS
+        </div>
+        <h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1.5px;">
+            Zero-Friction<br>IT Support.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            The agentless orchestration platform designed to consolidate fragmented IT workflows behind a single pane of glass. Drastically reduce MTTR and eliminate user hold times.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{{ site.github_repo }}" target="_blank" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">DOWNLOAD FROM GITHUB</a>
+            <a href="{{ '/capabilities/' | relative_url }}" class="btn console-font" style="padding: 1rem 2rem;">EXPLORE CAPABILITIES</a>
+        </div>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> UHDC Core Engine</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● ONLINE</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] Resolving identity for 'jsmith'...</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Checking telemetry history for jsmith...</p>
+            <p style="color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold; padding-left: 1.5rem;">[MATCH] DESKTOP-HQ-9912 (jsmith)</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Executing background remediation...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem; padding-left: 1.5rem;">[OK] Account Unlocked.</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem;">[OK] Print Spooler Restarted.</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold;">[INTEL] Auto-Filled Target PC to Action panels.</p>
+        </div>
+    </div>
+</header>
+
+<!-- PLATFORM PILLARS -->
+<section id="pillars" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">The Command Center for Enterprise IT</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">The UHDC bridges the gap between complex backend infrastructure and Tier 1 help desk usability, ensuring your team can resolve issues faster while continuously scaling their technical capabilities.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <!-- Card 1: Live Call Remediation -->
+        <a href="{{ '/live-call-remediation/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-purple);">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-headset"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">Live-Call Remediation</h3>
+            <p style="color: var(--text-secondary);">Stop putting users on hold. Aggregate AD, Intune, and WinRM into a unified interface to resolve complex tickets instantly while actively engaged with the user.</p>
+            <div class="console-font" style="color: var(--accent-purple); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">Read Philosophy ></div>
+        </a>
+
+        <!-- Card 2: Training Engine -->
+        <a href="{{ '/interactive-training-engine/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-warning);">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">Continuous Enablement</h3>
+            <p style="color: var(--text-secondary);">Don't just click buttons. The proprietary Training Engine intercepts execution pipelines to expose the underlying PowerShell logic, upskilling your staff in real-time.</p>
+            <div class="console-font" style="color: var(--accent-warning); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">Explore Engine ></div>
+        </a>
+
+        <!-- Card 3: The Arsenal -->
+        <a href="{{ '/capabilities/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-blue);">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-toolbox"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">The Arsenal</h3>
+            <p style="color: var(--text-secondary);">Deploy software silently, rebuild corrupted Chromium profiles, extract Cloud LAPS passwords, and generate hardware degradation reports with a single click.</p>
+            <div class="console-font" style="color: var(--accent-blue); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">View All Tools ></div>
+        </a>
+    </div>
+</section>
+
+<!-- MEDIA SHOWCASE SECTION -->
+<section id="media" style="padding-top: 0; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+        <h2 class="console-font">Agentless Architecture & Telemetry</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">The UHDC utilizes a highly secure, "Share-First" deployment model, allowing a single centralized installation to power an entire global IT department without deploying local agents.</p>
+    </div>
+
+    <!-- Architecture Image Showcase -->
+    <div class="media-showcase">
+        <div class="media-header">
+            <div class="mac-dot dot-red"></div>
+            <div class="mac-dot dot-yellow"></div>
+            <div class="mac-dot dot-green"></div>
+            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC Architecture</span>
+        </div>
+        <img src="{{ 'uhdc-architecture.png' | relative_url }}" alt="UHDC Software Workflow Illustration" style="width: 100%; height: auto; display: block; background: #fff;">
+    </div>
+
+    <!-- Video Showcase -->
+    <div class="media-showcase" style="margin-top: 4rem;">
+        <div class="media-header">
+            <div class="mac-dot dot-red"></div>
+            <div class="mac-dot dot-yellow"></div>
+            <div class="mac-dot dot-green"></div>
+            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC_Platform_Demo.mp4</span>
+        </div>
+        <video controls style="width: 100%; display: block; background: #000;">
+            <source src="{{ '/Unified_Help_Desk_Console.mp4' | relative_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="cta-block">
+        <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to transform your Help Desk?</h2>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto 2.5rem auto;">
+            Download the Community Edition today. No trial periods, no hidden telemetry, just raw administrative power.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ site.github_repo }}" target="_blank" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2.5rem; font-size: 1rem;">GET IT ON GITHUB</a>
+            <a href="{{ '/pricing/' | relative_url }}" class="btn console-font" style="padding: 1rem 2.5rem; font-size: 1rem;">VIEW ENTERPRISE PRICING</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,121 @@
+---
+layout: default
+title: "DNS Routing Remediation"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-route"></i> NETWORK REMEDIATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            DNS Routing Remediation.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Resolve "stale" DNS records and routing mismatches instantly. Force remote endpoints to flush their cache and re-register their active IP address using a resilient WinRM-to-PsExec pipeline.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-warning); color: var(--bg-base); border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-warning);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM / RPC Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE DNS REGISTRATION: LAPTOP-US-4829</p>
+
+            <p style="color: var(--accent-warning); margin-bottom: 1rem; font-weight: bold;">[i] Target didn't answer ping (Likely DNS mismatch). Proceeding anyway...</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;">[!] WinRM Failed or Blocked. Initiating PsExec Fallback...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Dispatching encoded payload...</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold;">[UHDC SUCCESS] DNS/WINS refresh commands dispatched via PsExec.</p>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">(Note: It may take 5-10 minutes for the Domain Controller to update)</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Overcoming the "Wi-Fi to Dock" Mismatch</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user switches from Wi-Fi to a wired docking station, they receive a new IP address. If the Domain Controller's DNS cache hasn't updated yet, remote connections fail because they route to the old IP. This tool pushes through the mismatch to force a sync.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-forward-fast"></i></div>
+            <h3 class="console-font">Intentional Ping Bypass</h3>
+            <p style="color: var(--text-secondary);">Unlike other tools, if the initial ICMP ping fails, this script does not abort. It recognizes that a ping timeout is the exact symptom of a DNS mismatch and intentionally forces the connection through anyway.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-user-ninja"></i></div>
+            <h3 class="console-font">Kerberos Fallback</h3>
+            <p style="color: var(--text-secondary);">WinRM relies on strict Kerberos authentication, which naturally fails during an IP mismatch. The engine anticipates this and seamlessly falls back to PsExec, which can resolve the connection via NetBIOS broadcasts.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="console-font">Unified Payload</h3>
+            <p style="color: var(--text-secondary);">To minimize network overhead, it wraps the native commands (<code>ipconfig /flushdns</code>, <code>ipconfig /registerdns</code>, and <code>nbtstat -RR</code>) into a single Base64-encoded script block, executing the entire sequence instantly.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-warning); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the exact command-line syntax used to flush the DNS cache and force a NetBIOS refresh over the network.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">ipconfig</span> <span class="param">/flushdns</span>; <span class="cmd">ipconfig</span> <span class="param">/registerdns</span>; <span class="cmd">nbtstat</span> <span class="param">-RR</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            } <span class="cmd">catch</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if Kerberos fails due to IP mismatch</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
+            <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening an elevated Command Prompt and typing 'ipconfig /flushdns', pressing Enter, typing 'ipconfig /registerdns', pressing Enter, and finally typing 'nbtstat -RR'.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: Why does the console say "Target didn't answer ping. Proceeding anyway..."?</div>
+        <div class="faq-answer">If a user's laptop has an IP address of <code>10.0.0.50</code>, but your Domain Controller thinks it has an IP of <code>10.0.0.20</code>, your ping command will be sent to <code>.20</code> and time out. The script recognizes this mismatch is the exact problem you are trying to solve, so it ignores the timeout and attempts to force the connection through anyway.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: I clicked the button, but I still can't remote into the PC. Why?</div>
+        <div class="faq-answer">The command executes instantly on the user's laptop, but the laptop then has to send that new IP address to your primary Domain Controller. Depending on your Active Directory site topology, it can take 5 to 10 minutes for that new DNS record to replicate across all the DNS servers in your environment. You may need to run <code>ipconfig /flushdns</code> on your <em>own</em> technician PC to clear your local cache before trying to connect again.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-warning);">
+        <div class="faq-question" style="color: var(--accent-warning);">Q: What does `nbtstat -RR` do?</div>
+        <div class="faq-answer">While <code>ipconfig</code> handles standard DNS (Domain Name System) routing, <code>nbtstat -RR</code> drops and refreshes the NetBIOS over TCP/IP name cache. NetBIOS is a legacy broadcast protocol that Windows still heavily relies on for local subnet discovery and file sharing (SMB). Refreshing both ensures all routing avenues are updated.</div>
+    </div>
+</section>

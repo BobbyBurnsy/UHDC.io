@@ -1,0 +1,136 @@
+---
+layout: default
+title: "Platform Architecture"
+custom_css: |
+  .media-showcase {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin: 3rem auto;
+      max-width: 1000px;
+  }
+  .media-header {
+      background: rgba(0,0,0,0.3);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+  }
+  .mac-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+  }
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-sitemap"></i> PLATFORM ARCHITECTURE
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Transforming IT Operations.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Modern enterprise IT support is plagued by platform sprawl. The UHDC aggregates native Windows management protocols and the Microsoft Graph API into a single, high-performance orchestration layer.
+        </p>
+        <a href="{{ '/capabilities/' | relative_url }}" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">EXPLORE THE ARSENAL</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> System Initialization</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● ONLINE</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[SYSTEM] Initializing Unified Help Desk Console...</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Loading orchestration modules: WinRM, RPC, SMB</p>
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Authenticating Microsoft Graph API...</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;"> > Enforcing Role-Based Access Control boundaries...</p>
+
+            <p style="color: var(--accent-green); font-weight: bold;">[OK] Platform ready. MTTR reduction protocols active.</p>
+        </div>
+    </div>
+</header>
+
+<!-- THE OPERATIONAL IMPERATIVE (PILLARS) -->
+<section id="pillars" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">The Operational Imperative</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">To resolve a single user issue, technicians are frequently forced to pivot between Active Directory, Intune, and disparate remote utilities. The UHDC architecture is designed to eliminate this friction across three core pillars.</p>
+    </div>
+
+    <div class="feature-grid-3">
+
+        <!-- Card 1: Live Call Remediation -->
+        <a href="{{ '/live-call-remediation/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-purple);">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-headset"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">Live-Call Remediation</h3>
+            <p style="color: var(--text-secondary);">Lower the barrier for advanced remediation. Resolve complex tickets on the first touch without putting users on hold to navigate slow web portals.</p>
+            <div class="console-font" style="color: var(--accent-purple); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">Read Philosophy ></div>
+        </a>
+
+        <!-- Card 2: Training Engine -->
+        <a href="{{ '/interactive-training-engine/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-warning);">
+            <div class="feature-icon" style="color: var(--accent-warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">Continuous Enablement</h3>
+            <p style="color: var(--text-secondary);">Mitigate "black box" dependencies. Expose the underlying PowerShell and API logic to upskill staff during routine ticket resolution.</p>
+            <div class="console-font" style="color: var(--accent-warning); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">Explore Engine ></div>
+        </a>
+
+        <!-- Card 3: Governance -->
+        <a href="{{ '/governance/' | relative_url }}" class="feature-box" style="display: block; text-decoration: none; border-top: 4px solid var(--accent-green);">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="console-font" style="color: var(--text-primary);">Governance & Compliance</h3>
+            <p style="color: var(--text-secondary);">Operate with absolute accountability. Enforce strict RBAC boundaries and log all executions to a centralized, immutable audit trail.</p>
+            <div class="console-font" style="color: var(--accent-green); margin-top: 1.5rem; font-size: 0.85rem; font-weight: bold;">View Framework ></div>
+        </a>
+
+    </div>
+</section>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<section style="border-bottom: none; padding-top: 2rem;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+        <h2 class="console-font">Topology & Protocol Routing</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">The UHDC acts as a centralized routing engine, translating technician intent into the appropriate underlying protocol (WinRM, RPC, LDAP, or REST) to interact securely with your on-premises and cloud infrastructure.</p>
+    </div>
+
+    <div class="media-showcase">
+        <div class="media-header">
+            <div class="mac-dot dot-red"></div>
+            <div class="mac-dot dot-yellow"></div>
+            <div class="mac-dot dot-green"></div>
+            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC Protocol Topology</span>
+        </div>
+        <!-- Ensure your image is saved as 'uhdc-architecture.png' in the root folder -->
+        <img src="{{ '/uhdc-architecture.png' | relative_url }}" alt="UHDC Architecture Diagram" style="width: 100%; height: auto; display: block; background: #fff;">
+    </div>
+</section>
+
+<!-- ENTERPRISE SCALABILITY BLOCK -->
+<section style="border-bottom: none; padding-top: 2rem;">
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 1) 100%); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--border-radius); padding: 3rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; box-shadow: var(--shadow-md);">
+        <div style="text-align: center;">
+            <i class="fa-solid fa-server" style="font-size: 5rem; color: var(--accent-blue); opacity: 0.8;"></i>
+        </div>
+        <div>
+            <div class="console-font" style="display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); margin-bottom: 1rem;">INFINITE CONCURRENCY</div>
+            <h2 class="console-font" style="margin-bottom: 1rem; border: none; padding: 0;">Built for Massive Scale</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                The UHDC is engineered to adapt to your environment. For small-to-medium enterprises, the platform utilizes a highly efficient, flat-file JSON database and an SMB drop-box to track asset telemetry with zero infrastructure overhead.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
+                For global, multi-domain forests exceeding <strong>20,000 endpoints</strong>, the UHDC seamlessly pivots to a <strong>Direct-to-SQL telemetry pipeline</strong>. This enterprise architecture eliminates file-lock bottlenecks during morning logon storms, utilizing Active Directory Computer Accounts to authenticate directly to your SQL clusters for microsecond lookups at infinite scale.
+            </p>
+        </div>
+    </div>
+
+</section>

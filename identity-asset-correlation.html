@@ -1,0 +1,123 @@
+---
+layout: default
+title: "Identity & Asset Correlation"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-purple); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-id-card-clip"></i> AD INTELLIGENCE ENGINE
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Identity & Asset Correlation.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            The tip of the spear for live phone support. Instantly cross-reference Active Directory profiles with historic hardware telemetry to map users to their physical devices—without ever asking for a hostname.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-purple); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-purple);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> LDAP / SMB Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] ACCOUNT REPORT: jsmith</p>
+
+            <div style="display: grid; grid-template-columns: 100px 1fr; gap: 4px; margin-bottom: 1rem;">
+                <span style="color: var(--text-muted);">Name:</span> <span style="color: var(--text-primary);">John Smith</span>
+                <span style="color: var(--text-muted);">Title:</span> <span style="color: var(--text-primary);">Senior Financial Analyst</span>
+                <span style="color: var(--text-muted);">Locked:</span> <span style="color: var(--accent-danger); font-weight: bold;">YES (LOCKED)</span>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">--- Password & Logon ---</p>
+            <p style="color: var(--accent-danger); margin-bottom: 1rem; font-weight: bold;">[!] Days until expiry: EXPIRED (2 days ago)</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">--- Known Locations ---</p>
+            <p style="color: var(--text-muted);">[1] LAPTOP-US-4829 (Seen: 2026-02-25 09:15)</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">[2] DESKTOP-HQ-9912 (Seen: 2026-02-23 14:22)</p>
+
+            <p style="color: var(--accent-blue); font-weight: bold;">[INTEL] Auto-Filled Target PC: LAPTOP-US-4829 to Action panels.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Eliminate the "Hostname" Conversation</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">When a user calls complaining about a broken application, asking them to find their computer name wastes valuable time. This engine executes a dual-pronged query to instantly deliver the user's security status and their active hardware location directly to your dashboard.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-network-wired"></i></div>
+            <h3 class="console-font">Instant Asset Mapping</h3>
+            <p style="color: var(--text-secondary);">Bypasses Active Directory to parse the central <code>UserHistory.json</code> database over SMB. It instantly retrieves a ranked list of the most recent workstations the user has logged into.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="console-font">Proactive Security Alerts</h3>
+            <p style="color: var(--text-secondary);">Dynamically calculates password expiration by querying the domain's default password policy. It triggers high-visibility UI alerts if the account is locked, disabled, or expired, preventing misdiagnosis.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3 class="console-font">UI Automation</h3>
+            <p style="color: var(--text-secondary);">The engine outputs a hidden <code>[GUI:UPDATE_TARGET]</code> tag. The C# frontend catches this string and automatically populates the "Target PC" text box, readying all remote tools instantly.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(139, 92, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-purple); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 200 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to calculate exact password expiration dates based on the domain's overarching security policy.
+        </p>
+
+        <div class="mock-code">
+            <span class="var">$adObj</span> = <span class="cmd">Get-ADUser</span> <span class="param">-Identity</span> <span class="var">$TargetUser</span> <span class="param">-Properties</span> LockedOut, PasswordLastSet<br>
+            <span class="var">$policy</span> = <span class="cmd">Get-ADDefaultDomainPasswordPolicy</span><br>
+            <span class="var">$expDate</span> = <span class="var">$adObj</span>.PasswordLastSet.AddDays(<span class="var">$policy</span>.MaxPasswordAge.Days)<br>
+            <span class="var">$daysLeft</span> = (<span class="var">$expDate</span> - (<span class="cmd">Get-Date</span>)).Days
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-purple); background: rgba(139, 92, 246, 0.05);">
+            <h4 style="color: var(--accent-purple);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening Active Directory Users and Computers (ADUC), searching for the user, checking the 'Account' tab to see if the 'Unlock account' box is checked, and manually doing the math based on your company's 90-day password rotation rule.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: What network ports does this engine require?</div>
+        <div class="faq-answer">The script requires <strong>Port 445 (SMB)</strong> to read the <code>UserHistory.json</code> map from the central network share. It relies on <strong>Port 389/636 (LDAP/S)</strong> to query Active Directory for the user's profile and the domain's default password policy.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: If a user belongs to 50 different Active Directory groups, will this script flood the console UI?</div>
+        <div class="faq-answer">No, by design. The script uses a specific regex filter to only display critical access groups (like VPN, Admin, or specific software licenses). It explicitly hides standard domain groups to keep the technician's Heads Up Display clean, noting at the bottom: <em>"...plus [X] other standard groups."</em></div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-purple);">
+        <div class="faq-question" style="color: var(--accent-purple);">Q: Where does the "Days until expiry" number come from?</div>
+        <div class="faq-answer">It is dynamically calculated. The script queries the domain's default password policy to find the exact "Maximum Password Age" (e.g., 90 days). It then takes the user's <code>PasswordLastSet</code> timestamp, adds 90 days to it, and subtracts the current date. This guarantees the expiration warning is always perfectly accurate, even if the domain policy changes.</div>
+    </div>
+</section>

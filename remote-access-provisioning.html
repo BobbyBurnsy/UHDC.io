@@ -1,0 +1,117 @@
+---
+layout: default
+title: "Remote Access Provisioning"
+---
+
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-green); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-desktop"></i> ACCESS ADMINISTRATION
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            Remote Access Provisioning.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Silent, multi-layer orchestration of Remote Desktop Protocol dependencies. Instantly restore administrative access to a remote endpoint without walking the user through the Control Panel.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-green); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
+
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-green);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WinRM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE DESKTOP CONFIGURATION</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Connecting to LAPTOP-US-4829 via WinRM...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > [1/3] Enabling RDP in Registry...</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > [2/3] Opening Windows Firewall for RDP (Port 3389)...</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > [3/3] Ensuring TermService is running...</p>
+
+            <p style="color: var(--accent-green); font-weight: bold; margin-bottom: 0.2rem;">[UHDC SUCCESS] RDP Enabled, Firewall Opened, and Service Started!</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">[i] You can try connecting using MSRA or RDP now.</p>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Architectural Overview</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">This module is a multi-layered configuration engine designed to instantly restore administrative access to a remote endpoint. It utilizes WinRM to systematically reconfigure the three core dependencies required for Remote Desktop Protocol (RDP) connections.</p>
+    </div>
+
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-book"></i></div>
+            <h3 class="console-font">Registry Modification</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote PowerShell session over Port 5985 (HTTP). It uses <code>Set-ItemProperty</code> to target the <code>Terminal Server</code> path, flipping the <code>fDenyTSConnections</code> DWORD from 1 to 0.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-fire-burner"></i></div>
+            <h3 class="console-font">Firewall Configuration</h3>
+            <p style="color: var(--text-secondary);">Re-uses the session to execute <code>Enable-NetFirewallRule</code>, targeting the native <code>Remote Desktop</code> display group to punch a hole in the local Windows Defender Firewall for TCP/UDP Port 3389.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-server"></i></div>
+            <h3 class="console-font">Service Initialization</h3>
+            <p style="color: var(--text-secondary);">Executes <code>Set-Service</code> to ensure the <code>TermService</code> is set to Automatic startup, followed by <code>Start-Service</code> to immediately bind the listening port.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-green); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-green); font-size: 0.9rem; font-weight: bold;">⭐ 150 XP</div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            When Training Mode is enabled, the UHDC pauses execution to explain the exact PowerShell pipeline required to fully enable RDP over the network.
+        </p>
+
+        <div class="mock-code">
+            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Set-ItemProperty</span> <span class="param">-Path</span> <span class="str">'HKLM:\System\CurrentControlSet\Control\Terminal Server'</span> <span class="param">-Name</span> <span class="str">'fDenyTSConnections'</span> <span class="param">-Value</span> <span class="str">0</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Enable-NetFirewallRule</span> <span class="param">-DisplayGroup</span> <span class="str">'Remote Desktop'</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Set-Service</span> <span class="param">-Name</span> <span class="str">'TermService'</span> <span class="param">-StartupType</span> Automatic; <span class="cmd">Start-Service</span> <span class="param">-Name</span> <span class="str">'TermService'</span><br>
+            }
+        </div>
+
+        <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
+            <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Opening System Properties to allow remote connections, opening Windows Firewall to allow the app through, and opening services.msc to start the Remote Desktop Services service.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Why do we need to do all three steps? Isn't changing the registry enough?</div>
+        <div class="faq-answer">No. Windows security is compartmentalized. Changing the registry tells the OS it is <em>allowed</em> to accept connections, but if the Windows Firewall is actively blocking Port 3389, the connection will still drop. Furthermore, if the underlying Terminal Service is stopped, there is no process listening on that port anyway. This workflow provides a holistic fix to ensure all three dependencies are met.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Does this bypass Network Level Authentication (NLA)?</div>
+        <div class="faq-answer">No. This module only enables the listening port and the service. It does not modify the <code>UserAuthentication</code> registry key. If your domain enforces Network Level Authentication for RDP connections via Group Policy, that security standard remains perfectly intact.</div>
+    </div>
+
+    <div class="faq-block" style="border-left-color: var(--accent-green);">
+        <div class="faq-question" style="color: var(--accent-green);">Q: Will executing this workflow kick the user off their computer?</div>
+        <div class="faq-answer">No. <em>Enabling</em> the feature happens silently in the background. However, if you subsequently use a standard RDP client (<code>mstsc.exe</code>) to connect to a Windows 10/11 workstation, it will prompt the user to allow you to take over their session, locking their screen. For live support where you want to share the screen with the user, you should use Microsoft Remote Assistance (MSRA) or SCCM Remote Control after enabling this feature.</div>
+    </div>
+</section>
