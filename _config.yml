@@ -14,5 +14,5 @@ collections:
   capabilities:
     output: true
     permalink: /capabilities/:title/
-    plugins:
+plugins:
   - jekyll-sitemap
