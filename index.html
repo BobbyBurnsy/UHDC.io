@@ -9,7 +9,7 @@ custom_css: |
       box-shadow: var(--shadow-md);
       overflow: hidden;
       margin: 3rem auto;
-      max-width: 1000px;
+      max-width: 1100px;
   }
   .media-header {
       background: rgba(0,0,0,0.3);
@@ -38,41 +38,30 @@ custom_css: |
 ---
 
 <!-- HERO SECTION -->
-<header class="hero-split">
-    <div class="hero-text">
-        <div class="console-font" style="display: inline-block; color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 1px; background: rgba(16, 185, 129, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
-            <i class="fa-solid fa-check-circle"></i> 100% FREE FOR TEAMS UNDER 1,000 ENDPOINTS
-        </div>
-        <h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1.5px;">
-            Zero-Friction<br>IT Support.
-        </h1>
-        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
-            The orchestration platform designed to consolidate fragmented IT workflows behind a single pane of glass. Drastically reduce MTTR and eliminate user hold times.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="{{ site.github_repo }}" target="_blank" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">DOWNLOAD FROM GITHUB</a>
-            <a href="{{ '/capabilities/' | relative_url }}" class="btn console-font" style="padding: 1rem 2rem;">EXPLORE CAPABILITIES</a>
-        </div>
+<header style="text-align: center; padding-top: 2rem; padding-bottom: 2rem;">
+    <div class="console-font" style="display: inline-block; color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 1px; background: rgba(16, 185, 129, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">
+        <i class="fa-solid fa-check-circle"></i> 100% FREE FOR TEAMS UNDER 1,000 ENDPOINTS
+    </div>
+    <h1 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1.5px;">
+        Zero-Friction<br>IT Support.
+    </h1>
+    <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 750px; margin-left: auto; margin-right: auto;">
+        The orchestration platform designed to consolidate fragmented IT workflows behind a single pane of glass. Drastically reduce MTTR and eliminate user hold times.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+        <a href="{{ site.github_repo }}" target="_blank" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">DOWNLOAD FROM GITHUB</a>
+        <a href="{{ '/capabilities/' | relative_url }}" class="btn console-font" style="padding: 1rem 2rem;">EXPLORE CAPABILITIES</a>
     </div>
 
-    <!-- MOCK UI SHOWCASE -->
-    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
-        <div class="mock-ui-header console-font">
-            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> UHDC Core Engine</span>
-            <span style="color: var(--accent-green); font-size: 0.8rem;">● ONLINE</span>
+    <!-- ACTUAL UI SCREENSHOT SHOWCASE -->
+    <div class="media-showcase" style="margin-top: 0; text-align: left; box-shadow: 0 20px 40px rgba(0,0,0,0.6); border-color: rgba(59, 130, 246, 0.3);">
+        <div class="media-header">
+            <div class="mac-dot dot-red"></div>
+            <div class="mac-dot dot-yellow"></div>
+            <div class="mac-dot dot-green"></div>
+            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC Workspace - Live Environment</span>
         </div>
-        <div class="mock-ui-body">
-            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] Resolving identity for 'jsmith'...</p>
-
-            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Checking telemetry history for jsmith...</p>
-            <p style="color: var(--accent-green); margin-bottom: 1.5rem; font-weight: bold; padding-left: 1.5rem;">[MATCH] DESKTOP-HQ-9912 (jsmith)</p>
-
-            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;"> > Executing background remediation...</p>
-            <p style="color: var(--text-muted); margin-bottom: 0.2rem; padding-left: 1.5rem;">[OK] Account Unlocked.</p>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem;">[OK] Print Spooler Restarted.</p>
-
-            <p style="color: var(--accent-blue); font-weight: bold;">[INTEL] Auto-Filled Target PC to Action panels.</p>
-        </div>
+        <img src="{{ '/UHDC.png' | relative_url }}" alt="Unified Help Desk Console UI" style="width: 100%; height: auto; display: block;">
     </div>
 </header>
 
@@ -110,26 +99,15 @@ custom_css: |
     </div>
 </section>
 
-<!-- MEDIA SHOWCASE SECTION -->
+<!-- VIDEO SHOWCASE SECTION -->
 <section id="media" style="padding-top: 0; border-bottom: none;">
     <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
-        <h2 class="console-font">Event-Driven Telemetry</h2>
-        <p style="color: var(--text-secondary); font-size: 1.1rem;">The UHDC utilizes a highly secure, "Share-First" deployment model. A microscopic, event-driven script broadcasts endpoint presence exclusively upon critical system states (Event 10000), keeping network overhead virtually nonexistent.</p>
-    </div>
-
-    <!-- Architecture Image Showcase -->
-    <div class="media-showcase">
-        <div class="media-header">
-            <div class="mac-dot dot-red"></div>
-            <div class="mac-dot dot-yellow"></div>
-            <div class="mac-dot dot-green"></div>
-            <span class="console-font" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 10px;">UHDC Architecture</span>
-        </div>
-        <img src="{{ 'uhdc-architecture.png' | relative_url }}" alt="UHDC Software Workflow Illustration" style="width: 100%; height: auto; display: block; background: #fff;">
+        <h2 class="console-font">See it in Action</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Watch how the UHDC instantly correlates identity, maps hardware, and executes complex remediation workflows in seconds.</p>
     </div>
 
     <!-- Video Showcase -->
-    <div class="media-showcase" style="margin-top: 4rem;">
+    <div class="media-showcase">
         <div class="media-header">
             <div class="mac-dot dot-red"></div>
             <div class="mac-dot dot-yellow"></div>
