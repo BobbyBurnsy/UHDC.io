@@ -77,20 +77,16 @@ title: "MECM Agent Synchronization"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic required to safely restart a monolithic service over WinRM without causing it to hang.
+            While the UHDC uses PowerShell to safely restart the service with a built-in delay, a junior technician should know how to bounce a service manually using classic command-line tools. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command as the SYSTEM account—stopping the 'CcmExec' service, using a classic loopback ping to create a 4-second delay (allowing log file locks to release), and then starting the service back up.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Stop-Service</span> <span class="param">-Name</span> <span class="str">CcmExec</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Sleep</span> <span class="param">-Seconds</span> <span class="str">4</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Service</span> <span class="param">-Name</span> <span class="str">CcmExec</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"net stop CcmExec & ping 127.0.0.1 -n 5 > nul & net start CcmExec"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
             <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Opening Services (services.msc), locating 'SMS Agent Host', right-clicking it, and selecting 'Restart'. Alternatively, opening the Configuration Manager applet in the Control Panel, going to the Actions tab, and running the 'Machine Policy Retrieval & Evaluation Cycle'.</p>
+            <p>Opening Services (services.msc), locating 'SMS Agent Host', right-clicking it, and selecting 'Restart'. Alternatively, opening an elevated command prompt and typing the 'net stop' and 'net start' commands.</p>
         </div>
     </div>
 </section>
