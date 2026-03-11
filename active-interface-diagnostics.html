@@ -88,15 +88,11 @@ title: "Active Interface Diagnostics"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the NetTCPIP module and filter out irrelevant network data.
+            While the UHDC uses PowerShell to filter out disconnected adapters and APIPA addresses for a clean UI, a junior technician should know how to quickly check a remote machine's IP configuration manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the classic <code>ipconfig /all</code> command and pipe it to <code>findstr</code> to instantly grab the active IPv4 addresses.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$adapters</span> = <span class="cmd">Get-NetAdapter</span> | <span class="cmd">Where-Object</span> Status -eq <span class="str">'Up'</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$ips</span> = <span class="cmd">Get-NetIPAddress</span> <span class="param">-AddressFamily</span> IPv4 | <span class="cmd">Where-Object</span> IPAddress -notmatch <span class="str">'169.254|127.0'</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Correlate IP to Adapter MAC/Speed</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">ipconfig</span> <span class="param">/all</span> | <span class="cmd">findstr</span> <span class="str">"IPv4"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
