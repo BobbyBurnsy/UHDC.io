@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Hardware Degradation Analysis"
+title: "Battery Health Analyzer"
 ---
 
 <!-- HERO SECTION -->
@@ -10,7 +10,7 @@ title: "Hardware Degradation Analysis"
             <i class="fa-solid fa-battery-half"></i> HARDWARE DIAGNOSTICS
         </div>
         <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
-            Hardware Degradation Analysis.
+            Battery Health Analyzer.
         </h1>
         <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
             Real-time hardware telemetry and graphical degradation visualization. Instantly calculate exact milliwatt-hour (mWh) metrics to diagnose failing laptop batteries over the network.
@@ -25,7 +25,7 @@ title: "Hardware Degradation Analysis"
             <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
         </div>
         <div class="mock-ui-body">
-            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] BATTERY HEALTH DIAGNOSTICS</p>
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] BATTERY HEALTH ANALYZER</p>
 
             <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">[i] Querying battery telemetry via WinRM...</p>
             <p style="color: var(--accent-blue); font-weight: bold; margin-bottom: 1rem;">[UHDC SUCCESS] Battery telemetry retrieved.</p>
@@ -92,13 +92,11 @@ title: "Hardware Degradation Analysis"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the hidden WMI battery namespaces and calculate the degradation percentage.
+            While the UHDC uses PowerShell to query the raw WMI battery namespaces and render a graphical health bar, a junior technician should know how to generate a battery report manually using classic command-line tools. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the native <code>powercfg</code> utility to generate a comprehensive HTML battery report directly on the target's C: drive.
         </p>
 
         <div class="mock-code">
-            <span class="var">$design</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-Namespace</span> <span class="str">root\wmi</span> <span class="param">-ClassName</span> <span class="str">BatteryStaticData</span><br>
-            <span class="var">$full</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-Namespace</span> <span class="str">root\wmi</span> <span class="param">-ClassName</span> <span class="str">BatteryFullChargedCapacity</span><br>
-            <span class="var">$health</span> = (<span class="var">$full</span>.FullChargedCapacity / <span class="var">$design</span>.DesignedCapacity) * <span class="str">100</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">powercfg</span> <span class="param">/batteryreport /output</span> <span class="str">"C:\battery_report.html"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
