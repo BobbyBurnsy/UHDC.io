@@ -106,21 +106,16 @@ title: "Advanced Event Forensics"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query remote event logs, package them into JSON, and handle firewall fallbacks.
+            While the UHDC uses PowerShell to parse and format thousands of logs into a clean UI table, a junior technician should know how to pull event logs manually from the command line. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the native Windows Event Utility (<code>wevtutil</code>) to instantly grab the latest system events in plain text without needing to open the slow Event Viewer GUI.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">try</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$json</span> = <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> <span class="var">$Payload</span><br>
-            } <span class="cmd">catch</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$json</span> = <span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">wevtutil</span> <span class="param">qe</span> System <span class="param">/c:10 /f:text /rd:true</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
             <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Opening Event Viewer (eventvwr.msc), filtering the System and Application logs for Critical/Error events, or using the 'Find' feature to search for a specific application crash.</p>
+            <p>Opening Event Viewer (eventvwr.msc), navigating to Windows Logs -> System, and filtering the log for Critical and Error events.</p>
         </div>
     </div>
 </section>
