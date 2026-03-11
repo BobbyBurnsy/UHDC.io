@@ -77,24 +77,11 @@ title: "Chromium Profile Rebuild"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 pipeline required to safely backup, terminate, purge, and restore a user's browser profile locally on the target machine.
+            While the UHDC uses a complex PowerShell pipeline to safely backup and restore the user's bookmarks during a reset, a junior technician should know how to forcefully wipe a corrupted application profile manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command to forcefully kill the frozen browser process using <code>taskkill</code>, and then completely delete the corrupted AppData directory using <code>rmdir</code>.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">try</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 1. Backup to local Temp directory</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Copy-Item</span> <span class="str">"C:\Users\$User\...\Bookmarks"</span> <span class="str">"C:\Windows\Temp\BM_Backup"</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 2. Kill locked processes</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Stop-Process</span> <span class="param">-Name</span> <span class="str">"chrome"</span>, <span class="str">"msedge"</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># 3. Purge AppData & Restore Bookmarks</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">"C:\Users\$User\...\User Data"</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Copy-Item</span> <span class="str">"C:\Windows\Temp\BM_Backup"</span> <span class="str">"C:\Users\$User\...\Bookmarks"</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            } <span class="cmd">catch</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"taskkill /F /IM chrome.exe & rmdir /S /Q &quot;C:\Users\$TargetUser\AppData\Local\Google\Chrome\User Data&quot;"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
