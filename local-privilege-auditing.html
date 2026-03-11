@@ -80,18 +80,16 @@ title: "Local Privilege Auditing"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the exact PowerShell pipeline required to query local security groups over the network.
+            While the UHDC uses PowerShell in the background to parse and format the data, a junior technician should know how to audit local groups manually using classic command-line tools. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the native <code>net localgroup</code> command to instantly list all members of the local Administrators group.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Get-LocalGroupMember</span> <span class="param">-Group</span> <span class="str">'Administrators'</span> | <span class="cmd">Select-Object</span> Name, PrincipalSource, ObjectClass<br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">net localgroup administrators</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
             <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Right-click the Start Menu, select 'Computer Management' (compmgmt.msc), expand 'Local Users and Groups', click 'Groups', and double-click the 'Administrators' group to view its members.</p>
+            <p>Opening Computer Management (compmgmt.msc), navigating to Local Users and Groups -> Groups, and double-clicking 'Administrators'. Alternatively, opening a local command prompt and typing: <code>net localgroup administrators</code></p>
         </div>
     </div>
 </section>
