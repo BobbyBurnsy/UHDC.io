@@ -1,134 +1,106 @@
-<#
-.SYNOPSIS
-    UHDC Web-Ready Tool: SystemUptimeVerification.ps1
-.DESCRIPTION
-    Queries the remote computer's WMI/CIM repository for Win32_OperatingSystem
-    to calculate the exact Last Boot Up Time and current Uptime.
-#>
+---
+layout: default
+title: "System Uptime Verification"
+---
 
-param(
-    [Parameter(Mandatory=$false, Position=0)]
-    [string]$Target,
+<!-- HERO SECTION -->
+<header class="hero-split">
+    <div class="hero-text">
+        <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
+            <i class="fa-solid fa-clock-rotate-left"></i> SYSTEM DIAGNOSTICS
+        </div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
+            System Uptime Verification.
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
+            Enforce the "trust but verify" rule of IT support. Instantly calculate the precise timespan a machine has been running continuously to verify user reboot claims and identify potential stability issues.
+        </p>
+        <a href="#how-it-works" class="btn console-font" style="background: var(--accent-blue); color: white; border: none; padding: 1rem 2rem;">SEE HOW IT WORKS</a>
+    </div>
 
-    [Parameter(Mandatory=$false, Position=1)]
-    [string]$TargetUser,
+    <!-- MOCK UI SHOWCASE -->
+    <div class="mock-ui-container" style="border-top-color: var(--accent-blue);">
+        <div class="mock-ui-header console-font">
+            <span style="color: var(--text-secondary);"><i class="fa-solid fa-terminal"></i> WMI / CIM Dispatcher</span>
+            <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
+        </div>
+        <div class="mock-ui-body">
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] UPTIME CHECK: LAPTOP-US-4829</p>
 
-    [Parameter(Mandatory=$false)]
-    [string]$SharedRoot,
+            <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Querying LAPTOP-US-4829...</p>
+            <p style="color: var(--text-muted);"> > Last Boot: 02/11/2026 08:14</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;"> > Uptime:    14 Days, 6 Hours, 22 Minutes</p>
 
-    [Parameter(Mandatory=$false)]
-    [switch]$GetTrainingData
-)
+            <p style="color: var(--accent-warning); font-weight: bold;">[!] ATTENTION: Machine has not been rebooted in over a week.</p>
+        </div>
+    </div>
+</header>
 
-$ErrorActionPreference = "Continue"
+<!-- FEATURE BREAKDOWN -->
+<section id="how-it-works" style="border-top: 1px solid var(--border-color); padding-top: 4rem; border-bottom: none;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="console-font">Trust, But Verify</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Users frequently confuse "closing the laptop lid" or "logging off" with a full system restart. Instead of arguing with the user over whether they actually rebooted, this tool provides absolute, mathematical proof of the system's state in seconds.</p>
+    </div>
 
-# --- Export Training Data ---
-if ($GetTrainingData) {
-    $data = @{
-        StepName = "SYSTEM UPTIME VERIFICATION"
-        Description = "While the UHDC uses PowerShell and WMI in the background for speed, a junior technician should know how to check this manually using classic command-line tools. By utilizing Sysinternals PsExec, you can remotely execute the 'systeminfo' command and pipe the output to 'find' to instantly grab the exact boot time without needing complex PowerShell scripts. This is a highly reliable fallback when WMI is broken."
-        Code = "psexec \\`$Target systeminfo | find `"System Boot Time`""
-        InPerson = "Pressing Ctrl+Shift+Esc to open Task Manager, clicking the 'Performance' tab, selecting 'CPU', and looking at the 'Up time' counter at the bottom. Alternatively, opening a local command prompt and typing: systeminfo | find `"System Boot Time`""
-    }
-    $data | ConvertTo-Json | Write-Output
-    return
-}
+    <div class="feature-grid-3">
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="console-font">CIM Telemetry Extraction</h3>
+            <p style="color: var(--text-secondary);">Establishes a remote session over Port 5985 (HTTP) using the modern <code>Get-CimInstance</code> cmdlet to query the <code>Win32_OperatingSystem</code> class, bypassing legacy DCOM/RPC firewall blocks.</p>
+        </div>
 
-# --- Main Execution ---
-Write-Output "========================================"
-Write-Output "[UHDC] SYSTEM UPTIME VERIFICATION"
-Write-Output "========================================"
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-calculator"></i></div>
+            <h3 class="console-font">Timespan Calculation</h3>
+            <p style="color: var(--text-secondary);">Extracts the <code>LastBootUpTime</code> property (which CIM automatically converts into a standard PowerShell datetime object) and subtracts it from the current time to create a precise timespan.</p>
+        </div>
 
-if ([string]::IsNullOrWhiteSpace($Target)) { 
-    Write-Output "[!] ERROR: Target PC is required."
-    return 
-}
+        <div class="feature-box">
+            <div class="feature-icon" style="color: var(--accent-blue); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3 class="console-font">Automated Alerting</h3>
+            <p style="color: var(--text-secondary);">Evaluates the calculated uptime days. If the value is greater than 7, it automatically injects a high-visibility warning string into the console output to alert the technician of potential system instability.</p>
+        </div>
+    </div>
+</section>
 
-if (-not (Test-Connection -ComputerName $Target -Count 1 -Quiet)) {
-    Write-Output "[!] Offline. $Target is not responding to ping."
-    return
-}
+<!-- TRAINING ENGINE SHOWCASE -->
+<section style="padding-top: 0; border-bottom: none;">
+    <div class="training-showcase" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div class="console-font" style="color: var(--accent-blue); font-weight: bold; font-size: 1.1rem;">
+                <i class="fa-solid fa-graduation-cap"></i> INTERACTIVE TRAINING ENGINE
+            </div>
+            <div class="console-font" style="color: var(--accent-blue); font-size: 0.9rem; font-weight: bold;">⭐ 50 XP</div>
+        </div>
 
-$ActionLog = "System Uptime Verified"
+        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            While the UHDC uses PowerShell and WMI in the background for speed, a junior technician should know how to check this manually using classic command-line tools. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the <code>systeminfo</code> command and pipe the output to <code>find</code> to instantly grab the exact boot time without needing complex PowerShell scripts.
+        </p>
 
-$PayloadString = @"
-    `$ErrorActionPreference = 'Stop'
-    `$os = Get-CimInstance -ClassName Win32_OperatingSystem
-    Write-Output `$os.LastBootUpTime.ToString('o')
-"@
+        <div class="mock-code">
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">systeminfo</span> | <span class="cmd">find</span> <span class="str">"System Boot Time"</span>
+        </div>
 
-$PayloadBlock = [scriptblock]::Create($PayloadString)
-$RawBootString = $null
-$MethodUsed = "WinRM"
+        <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+            <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
+            <p>Pressing Ctrl+Shift+Esc to open Task Manager, clicking the 'Performance' tab, selecting 'CPU', and looking at the 'Up time' counter at the bottom. Alternatively, opening a local command prompt and typing: <code>systeminfo | find "System Boot Time"</code></p>
+        </div>
+    </div>
+</section>
 
-try {
-    Write-Output "[i] Attempting connection to $Target via WinRM..."
-    $RawBootString = Invoke-Command -ComputerName $Target -ErrorAction Stop -ScriptBlock $PayloadBlock
-} catch {
-    Write-Output "[!] WinRM Failed or Blocked. Initiating PsExec Fallback..."
-    $MethodUsed = "PsExec"
+<!-- FAQ SECTION -->
+<section style="border-bottom: none;">
+    <h2 class="console-font" style="margin-bottom: 2rem;">Technical Q&A</h2>
 
-    $psExecPath = Join-Path -Path $SharedRoot -ChildPath "Core\psexec.exe"
-    if (Test-Path $psExecPath) {
-        try {
-            $Bytes = [System.Text.Encoding]::Unicode.GetBytes($PayloadString)
-            $EncodedCommand = [Convert]::ToBase64String($Bytes)
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why do users so frequently think they rebooted when they actually didn't?</div>
+        <div class="faq-answer">Aside from simply confusing "logging off" with "restarting," the biggest culprit is the Windows "Fast Startup" feature. By default, when a user clicks "Shut down" in Windows 10/11, the PC doesn't actually turn off completely; it logs the user out and hibernates the Windows kernel to make the next boot faster. Because the kernel never stopped running, the WMI Uptime counter never resets. Only a true "Restart" command (or a forced shutdown) resets the counter.</div>
+    </div>
 
-            $ArgsList = "/accepteula \\$Target -s powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -EncodedCommand $EncodedCommand"
-            $PsExecOutput = & $psExecPath $ArgsList 2>&1 | Out-String
-
-            if ($PsExecOutput -match '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*)') {
-                $RawBootString = $matches[1].Trim()
-                $ActionLog += " [PsExec Fallback]"
-            } else {
-                throw "Could not parse boot time from PsExec output."
-            }
-        } catch {
-            Write-Output "`n[!] FATAL ERROR: Both WinRM and PsExec failed."
-            return
-        }
-    } else {
-        Write-Output "`n[!] FATAL ERROR: WinRM failed and psexec.exe is missing from \Core."
-        return
-    }
-}
-
-if (-not [string]::IsNullOrWhiteSpace($RawBootString)) {
-    try {
-        $boot = [datetime]::Parse($RawBootString)
-        $now = Get-Date
-        $uptime = $now - $boot
-
-        Write-Output "`n[UHDC SUCCESS] Uptime retrieved successfully via $MethodUsed!"
-
-        $statusColor = "#2ecc71"
-        if ($uptime.Days -gt 7) { $statusColor = "#f1c40f" }
-
-        $html = "<div style='background: #1e293b; padding: 16px; border-radius: 8px; border-left: 4px solid $statusColor; margin-top: 10px; margin-bottom: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); font-family: system-ui, sans-serif;'>"
-        $html += "<div style='color: #f8fafc; font-weight: bold; font-size: 1.1rem; margin-bottom: 12px;'><i class='fa-solid fa-clock'></i> System Uptime</div>"
-        $html += "<div style='display: grid; grid-template-columns: 90px 1fr; gap: 8px; font-size: 0.95rem;'>"
-        $html += "<span style='color: #94a3b8;'>Last Boot:</span><span style='color: #cbd5e1;'>$($boot.ToString('MM/dd/yyyy HH:mm'))</span>"
-        $html += "<span style='color: #94a3b8;'>Uptime:</span><span style='color: #f8fafc; font-weight: bold;'>$($uptime.Days) Days, $($uptime.Hours) Hours, $($uptime.Minutes) Minutes</span>"
-        $html += "</div>"
-
-        if ($uptime.Days -gt 7) {
-            $html += "<div style='margin-top: 12px; padding-top: 12px; border-top: 1px solid #334155; color: $statusColor; font-size: 0.9rem; font-weight: bold;'>"
-            $html += "<i class='fa-solid fa-triangle-exclamation'></i> ATTENTION: Machine has not been rebooted in over a week."
-            $html += "</div>"
-        }
-
-        $html += "</div>"
-        Write-Output $html
-
-        if (-not [string]::IsNullOrWhiteSpace($SharedRoot)) {
-            $AuditHelper = Join-Path -Path $SharedRoot -ChildPath "Core\Helper_AuditLog.ps1"
-            if (Test-Path $AuditHelper) {
-                & $AuditHelper -Target $Target -Action "Verified Uptime ($($uptime.Days) Days)" -SharedRoot $SharedRoot
-            }
-        }
-    } catch {
-        Write-Output "`n[!] ERROR: Failed to parse boot time string."
-    }
-} else {
-    Write-Output "`n[!] ERROR: No boot time string returned from target."
-}
+    <div class="faq-block" style="border-left-color: var(--accent-blue);">
+        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the script use `Get-CimInstance` instead of the older `Get-WmiObject`?</div>
+        <div class="faq-answer"><code>Get-WmiObject</code> relies on legacy DCOM/RPC protocols (Port 135 and dynamic high ports), which are frequently blocked by modern endpoint firewalls. <code>Get-CimInstance</code> is the modern standard; it routes the exact same WMI queries over the WinRM protocol (Port 5985/HTTP), which is much more firewall-friendly and reliable across enterprise networks.</div>
+    </div>
+</section>
