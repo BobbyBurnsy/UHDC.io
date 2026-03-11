@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Remote Access Provisioning"
+title: "Enable Remote Desktop"
 ---
 
 <!-- HERO SECTION -->
@@ -10,7 +10,7 @@ title: "Remote Access Provisioning"
             <i class="fa-solid fa-desktop"></i> ACCESS ADMINISTRATION
         </div>
         <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
-            Remote Access Provisioning.
+            Enable Remote Desktop.
         </h1>
         <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
             Silent, multi-layer orchestration of Remote Desktop Protocol dependencies. Instantly restore administrative access to a remote endpoint without walking the user through the Control Panel.
@@ -25,7 +25,7 @@ title: "Remote Access Provisioning"
             <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
         </div>
         <div class="mock-ui-body">
-            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE DESKTOP CONFIGURATION</p>
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] ENABLE REMOTE DESKTOP</p>
 
             <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Connecting to LAPTOP-US-4829 via WinRM...</p>
             <p style="color: var(--text-muted); margin-bottom: 0.2rem;"> > [1/3] Enabling RDP in Registry...</p>
@@ -78,11 +78,11 @@ title: "Remote Access Provisioning"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            While the UHDC uses PowerShell to orchestrate the registry, firewall, and service dependencies, a junior technician should know how to provision RDP manually from the command line. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command as the SYSTEM account—modifying the 'fDenyTSConnections' registry key using <code>reg add</code>, opening the Windows Firewall using <code>netsh</code>, and starting the Terminal Services service all at once.
+            Enabling RDP manually requires modifying three separate security layers: the Registry, the Firewall, and the Terminal Service. Typing all of that out in a console is a nightmare. The training engine uses this opportunity to teach the Golden Rule of IT: <strong>Don't memorize long commands. Build a script library.</strong> It teaches them how to use PsExec to remotely invoke a pre-written script directly from a network share.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"reg add &quot;HKLM\System\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d 0 /f & netsh advfirewall firewall set rule group=&quot;Remote Desktop&quot; new enable=Yes & net start TermService"</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-ExecutionPolicy Bypass -WindowStyle Hidden -File</span> <span class="str">"\\server\IT_Share\Scripts\EnableRDP.ps1"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
