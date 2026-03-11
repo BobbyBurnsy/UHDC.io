@@ -75,13 +75,11 @@ title: "Background Policy Enforcement"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic and specific command-line arguments required to safely trigger a background policy refresh over WinRM.
+            While the UHDC uses WinRM and PowerShell runspaces in the background, a junior technician should know how to trigger a remote policy update manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the native <code>gpupdate.exe</code> utility as the SYSTEM account, explaining the critical nature of the <code>/wait:0</code> flag to prevent console hangs.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">gpupdate</span> <span class="param">/force</span> <span class="param">/target:computer</span> <span class="param">/wait:0</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">gpupdate.exe</span> <span class="param">/force</span> <span class="param">/target:computer</span> <span class="param">/wait:0</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
