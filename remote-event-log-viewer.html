@@ -1,16 +1,16 @@
 ---
 layout: default
-title: "Advanced Event Forensics"
+title: "Remote Event Log Viewer"
 ---
 
 <!-- HERO SECTION -->
 <header class="hero-split">
     <div class="hero-text">
         <div class="console-font" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: bold; letter-spacing: 1px;">
-            <i class="fa-solid fa-file-lines"></i> FORENSIC RETRIEVAL
+            <i class="fa-solid fa-file-lines"></i> EVENT LOG VIEWER
         </div>
         <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
-            Advanced Event Forensics.
+            Remote Event Log Viewer.
         </h1>
         <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
             Deep-scan string matching and rapid log retrieval—without leaving the dashboard. Instantly identify application crashes and kernel panics across the network using a highly resilient execution pipeline.
@@ -25,7 +25,7 @@ title: "Advanced Event Forensics"
             <span style="color: var(--accent-green); font-size: 0.8rem;">● CONNECTED</span>
         </div>
         <div class="mock-ui-body">
-            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE EVENT LOG DIAGNOSTICS</p>
+            <p style="color: var(--text-primary); margin-bottom: 1rem;">[UHDC] REMOTE EVENT LOG VIEWER</p>
 
             <p style="color: var(--text-secondary); margin-bottom: 0.2rem;">[i] Attempting connection to LAPTOP-US-4829 via WinRM...</p>
             <p style="color: var(--text-muted); margin-bottom: 1rem;"> > Deep searching last 10,000 events for keyword: 'bugcheck'...</p>
@@ -126,21 +126,4 @@ title: "Advanced Event Forensics"
 
     <div class="faq-block" style="border-left-color: var(--accent-blue);">
         <div class="faq-question" style="color: var(--accent-blue);">Q: What network ports are required for this tool to function?</div>
-        <div class="faq-answer">The engine primarily relies on <strong>Port 5985 (WinRM/HTTP)</strong> to execute the query locally on the target machine, which is significantly faster and more reliable than pulling raw logs across the network. If WinRM is blocked, it falls back to <strong>Port 445 (SMB)</strong> and <strong>Port 135 (RPC)</strong> to deploy the PsExec payload.</div>
-    </div>
-
-    <div class="faq-block" style="border-left-color: var(--accent-blue);">
-        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the deep scan limit the search to the last 10,000 events?</div>
-        <div class="faq-answer">Windows Event logs can easily contain millions of entries. Attempting to parse the entire log can cause severe pipeline lag, memory spikes, and UI lockups. A 10,000-event buffer is the perfect architectural balance—it safely captures recent forensic data while maintaining a sub-10-second response time for the technician.</div>
-    </div>
-
-    <div class="faq-block" style="border-left-color: var(--accent-blue);">
-        <div class="faq-question" style="color: var(--accent-blue);">Q: Why does the dashboard table only show 50 logs, but the CSV has all of them?</div>
-        <div class="faq-answer">Browser DOM performance is highly sensitive to massive HTML tables. Flooding the web UI with thousands of multiline error strings would cause the interface to freeze and ruin the user experience. We limit the "Heads Up Display" to the top 50 results for immediate triage, and export the full, un-truncated dataset to CSV for deep forensic review.</div>
-    </div>
-
-    <div class="faq-block" style="border-left-color: var(--accent-blue);">
-        <div class="faq-question" style="color: var(--accent-blue);">Q: Does this query the remote 'Security' log too?</div>
-        <div class="faq-answer">No, it specifically targets the 'System' and 'Application' logs. The 'Security' log is heavily restricted, often requiring elevated Domain Admin auditing privileges to read remotely. Furthermore, it is typically flooded with thousands of routine logon/logoff audits, which dramatically slows down query times for standard Tier 1/Tier 2 troubleshooting.</div>
-    </div>
-</section>
+        <div class="faq-answer">The engine primarily relies on
