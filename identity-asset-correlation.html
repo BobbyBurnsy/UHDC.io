@@ -85,19 +85,16 @@ title: "Identity & Asset Correlation"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to calculate exact password expiration dates based on the domain's overarching security policy.
+            While the UHDC uses the ActiveDirectory PowerShell module to parse and format data for the UI, a junior technician should know how to quickly look up a user's domain profile using classic command-line tools. The training engine teaches them how to use the native <code>net user</code> command to instantly return lockout status, password expiration, and group memberships without needing to open the heavy ADUC graphical interface.
         </p>
 
         <div class="mock-code">
-            <span class="var">$adObj</span> = <span class="cmd">Get-ADUser</span> <span class="param">-Identity</span> <span class="var">$TargetUser</span> <span class="param">-Properties</span> LockedOut, PasswordLastSet<br>
-            <span class="var">$policy</span> = <span class="cmd">Get-ADDefaultDomainPasswordPolicy</span><br>
-            <span class="var">$expDate</span> = <span class="var">$adObj</span>.PasswordLastSet.AddDays(<span class="var">$policy</span>.MaxPasswordAge.Days)<br>
-            <span class="var">$daysLeft</span> = (<span class="var">$expDate</span> - (<span class="cmd">Get-Date</span>)).Days
+            <span class="cmd">net user</span> <span class="var">$TargetUser</span> <span class="param">/domain</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-purple); background: rgba(139, 92, 246, 0.05);">
             <h4 style="color: var(--accent-purple);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Opening Active Directory Users and Computers (ADUC), searching for the user, checking the 'Account' tab to see if the 'Unlock account' box is checked, and manually doing the math based on your company's 90-day password rotation rule.</p>
+            <p>Opening Active Directory Users and Computers (ADUC), searching for the user, checking the 'Account' tab to see if the 'Unlock account' box is checked, checking the 'Member Of' tab, and manually calculating their password expiration date.</p>
         </div>
     </div>
 </section>
