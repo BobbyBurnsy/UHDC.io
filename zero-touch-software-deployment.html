@@ -84,25 +84,16 @@ title: "Zero-Touch Software Deployment"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the advanced PowerShell logic used to encode payloads, send UDP broadcast packets, and dispatch parallel background jobs via WMI.
+            While the UHDC uses WMI and PowerShell runspaces to deploy software asynchronously, a junior technician should know how to push an installer manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute an installer as the SYSTEM account. This bypasses the infamous "Double-Hop" authentication issue, allowing the target machine's computer account to pull the installer directly from a network share.
         </p>
 
         <div class="mock-code">
-            <span class="text-muted"># 1. Send UDP Magic Packet for Wake-on-LAN</span><br>
-            <span class="var">$udpClient</span> = <span class="cmd">New-Object</span> System.Net.Sockets.UdpClient<br>
-            <span class="var">$udpClient</span>.Connect([System.Net.IPAddress]::Broadcast, <span class="str">9</span>)<br>
-            <span class="var">$udpClient</span>.Send(<span class="var">$magicPacket</span>, <span class="var">$magicPacket</span>.Length)<br><br>
-
-            <span class="text-muted"># 2. Dispatch Parallel WinRM Jobs using WMI Process Creation</span><br>
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Online</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">param</span>(<span class="var">$cmd</span>)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-CimMethod</span> <span class="param">-ClassName</span> <span class="str">Win32_Process</span> <span class="param">-MethodName</span> Create <span class="param">-Arguments</span> @{ CommandLine = <span class="var">$cmd</span> }<br>
-            } <span class="param">-ArgumentList</span> <span class="var">$wmiPayload</span> <span class="param">-AsJob</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">msiexec.exe</span> <span class="param">/i</span> <span class="str">"\\server\share\installer.msi"</span> <span class="param">/qn /norestart</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
             <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Walking desk to desk to physically turn on powered-off computers, plugging in a flash drive, and manually clicking through the installation wizard on 40 different machines.</p>
+            <p>Walking desk to desk with a flash drive, copying the installer to the desktop, and clicking through the installation wizard. Alternatively, opening an elevated command prompt and typing the silent install command.</p>
         </div>
     </div>
 </section>
