@@ -79,19 +79,11 @@ title: "Out-of-Band Data Preservation"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the advanced PowerShell logic used to encode raw files into text streams to bypass network firewalls.
+            While the UHDC uses a complex Base64 encoding pipeline to bypass strict SMB firewalls, a junior technician should know how to manually extract files over the network using classic administrative shares. The training engine teaches them how to utilize the built-in <code>xcopy</code> command to reach directly into the target's hidden <code>C$</code> share and pull their Chrome bookmarks file straight to their local desktop.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">try</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$out</span> = <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> <span class="var">$Payload</span><br>
-            } <span class="cmd">catch</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="var">$out</span> = <span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
-            }<br>
-            <span class="text-muted"># Decode Base64 output back into files locally</span><br>
-            <span class="var">$bytes</span> = [Convert]::FromBase64String(<span class="var">$out</span>)<br>
-            [IO.File]::WriteAllBytes(<span class="var">$destFolder</span>, <span class="var">$bytes</span>)
+            <span class="cmd">xcopy</span> <span class="str">"\\$Target\C$\Users\$TargetUser\AppData\Local\Google\Chrome\User Data\Default\Bookmarks"</span> <span class="str">"%USERPROFILE%\Desktop\"</span> <span class="param">/Y</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
