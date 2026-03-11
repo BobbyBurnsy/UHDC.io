@@ -78,20 +78,16 @@ title: "Remote Access Provisioning"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the exact PowerShell pipeline required to fully enable RDP over the network.
+            While the UHDC uses PowerShell to orchestrate the registry, firewall, and service dependencies, a junior technician should know how to provision RDP manually from the command line. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command as the SYSTEM account—modifying the 'fDenyTSConnections' registry key using <code>reg add</code>, opening the Windows Firewall using <code>netsh</code>, and starting the Terminal Services service all at once.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Set-ItemProperty</span> <span class="param">-Path</span> <span class="str">'HKLM:\System\CurrentControlSet\Control\Terminal Server'</span> <span class="param">-Name</span> <span class="str">'fDenyTSConnections'</span> <span class="param">-Value</span> <span class="str">0</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Enable-NetFirewallRule</span> <span class="param">-DisplayGroup</span> <span class="str">'Remote Desktop'</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Set-Service</span> <span class="param">-Name</span> <span class="str">'TermService'</span> <span class="param">-StartupType</span> Automatic; <span class="cmd">Start-Service</span> <span class="param">-Name</span> <span class="str">'TermService'</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"reg add &quot;HKLM\System\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d 0 /f & netsh advfirewall firewall set rule group=&quot;Remote Desktop&quot; new enable=Yes & net start TermService"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
             <h4 style="color: var(--accent-green);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Opening System Properties to allow remote connections, opening Windows Firewall to allow the app through, and opening services.msc to start the Remote Desktop Services service.</p>
+            <p>Opening System Properties to allow remote connections, opening Windows Defender Firewall to allow the app through, and opening services.msc to start the Remote Desktop Services service.</p>
         </div>
     </div>
 </section>
