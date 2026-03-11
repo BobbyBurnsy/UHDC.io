@@ -77,14 +77,11 @@ title: "Automated Warranty Routing"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the motherboard's embedded serial number and launch the vendor portal.
+            While the UHDC uses PowerShell to query WMI and dynamically build the vendor's URL, a junior technician should know how to quickly grab a remote computer's serial number manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute the classic <code>wmic</code> command to instantly retrieve the BIOS serial number (Service Tag) without needing to physically flip the laptop over.
         </p>
 
         <div class="mock-code">
-            <span class="var">$bios</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_BIOS</span><br>
-            <span class="var">$cs</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_ComputerSystem</span><br>
-            <span class="var">$url</span> = <span class="str">"https://www.dell.com/support/home/en-us/product-support/servicetag/$($bios.SerialNumber)/overview"</span><br>
-            <span class="cmd">Start-Process</span> <span class="var">$url</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">wmic bios get serialnumber</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
