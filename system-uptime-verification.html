@@ -76,18 +76,16 @@ title: "System Uptime Verification"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 logic used to query the operating system and calculate the timespan delta.
+            When Training Mode is enabled, the UHDC pauses execution to teach junior technicians how to retrieve this data manually using classic command-line tools. By utilizing Sysinternals PsExec and the native <code>systeminfo</code> command, they learn a highly reliable fallback method that works even when WMI is broken.
         </p>
 
         <div class="mock-code">
-            <span class="var">$os</span> = <span class="cmd">Get-CimInstance</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ClassName</span> <span class="str">Win32_OperatingSystem</span><br>
-            <span class="var">$boot</span> = <span class="var">$os</span>.LastBootUpTime<br>
-            <span class="var">$uptime</span> = (<span class="cmd">Get-Date</span>) - <span class="var">$boot</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">systeminfo</span> | <span class="cmd">find</span> <span class="str">"System Boot Time"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
             <h4 style="color: var(--accent-blue);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Pressing Ctrl+Shift+Esc to open Task Manager, clicking the 'Performance' tab, selecting 'CPU', and looking at the 'Up time' counter at the bottom of the window.</p>
+            <p>Pressing Ctrl+Shift+Esc to open Task Manager, clicking the 'Performance' tab, selecting 'CPU', and looking at the 'Up time' counter at the bottom. Alternatively, opening a local command prompt and typing: <code>systeminfo | find "System Boot Time"</code>.</p>
         </div>
     </div>
 </section>
