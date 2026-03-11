@@ -79,18 +79,11 @@ title: "DNS Routing Remediation"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the exact command-line syntax used to flush the DNS cache and force a NetBIOS refresh over the network.
+            While the UHDC uses PowerShell runspaces in the background, a junior technician should know how to force a DNS and NetBIOS refresh manually using classic command-line tools. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command as the SYSTEM account—flushing the DNS cache, re-registering the IP address, and refreshing NetBIOS names in one swift motion.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">try</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">ipconfig</span> <span class="param">/flushdns</span>; <span class="cmd">ipconfig</span> <span class="param">/registerdns</span>; <span class="cmd">nbtstat</span> <span class="param">-RR</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            } <span class="cmd">catch</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if Kerberos fails due to IP mismatch</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"ipconfig /flushdns & ipconfig /registerdns & nbtstat -RR"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
