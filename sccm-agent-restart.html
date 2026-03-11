@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "MECM Agent Synchronization"
+title: "SCCM Agent Restart"
 ---
 
 <!-- HERO SECTION -->
@@ -10,7 +10,7 @@ title: "MECM Agent Synchronization"
             <i class="fa-solid fa-arrows-rotate"></i> DEPLOYMENT REMEDIATION
         </div>
         <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px;">
-            MECM Agent Synchronization.
+            SCCM Agent Restart.
         </h1>
         <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 2.5rem;">
             Resolve stalled software deployments and force machine policy retrievals instantly. Safely restart the SMS Agent Host without forcing the user to reboot their computer.
@@ -102,7 +102,7 @@ title: "MECM Agent Synchronization"
 
     <div class="faq-block" style="border-left-color: var(--accent-warning);">
         <div class="faq-question" style="color: var(--accent-warning);">Q: Does this reinstall or repair a broken SCCM client?</div>
-        <div class="faq-answer">No. This script simply restarts the existing service. If the SCCM client is fundamentally broken (e.g., WMI repository corruption or missing binaries), the service will fail to start. For deep corruption, you would need to use the UHDC's "Deep Storage Remediation" tool to purge the cache, followed by a full client reinstall.</div>
+        <div class="faq-answer">No. This script simply restarts the existing service. If the SCCM client is fundamentally broken (e.g., WMI repository corruption or missing binaries), the service will fail to start. For deep corruption, you would need to use the UHDC's "Deep Storage Cleanup" tool to purge the cache, followed by a full client reinstall.</div>
     </div>
 
     <div class="faq-block" style="border-left-color: var(--accent-warning);">
