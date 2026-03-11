@@ -83,15 +83,11 @@ title: "Custom Script Orchestrator"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell logic used to read files into memory and dispatch them as ScriptBlocks.
+            While the UHDC uses in-memory ScriptBlocks and WinRM for mass concurrency, a junior technician should know how to manually deploy a PowerShell script to a remote machine. The training engine teaches them how to utilize Sysinternals PsExec to remotely invoke the PowerShell executable, bypass the local execution policy, and run a script directly from a network share as the SYSTEM account.
         </p>
 
         <div class="mock-code">
-            <span class="text-muted"># Read the script from the network share into memory</span><br>
-            <span class="var">$Payload</span> = <span class="cmd">Get-Content</span> <span class="var">$ScriptPath</span> <span class="param">-Raw</span><br><br>
-
-            <span class="text-muted"># Convert string to ScriptBlock and dispatch via WinRM</span><br>
-            <span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$TargetArray</span> <span class="param">-ScriptBlock</span> ([scriptblock]::Create(<span class="var">$Payload</span>)) <span class="param">-AsJob</span>
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-ExecutionPolicy Bypass -WindowStyle Hidden -File</span> <span class="str">"\\server\share\scripts\YourScript.ps1"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-green); background: rgba(16, 185, 129, 0.05);">
