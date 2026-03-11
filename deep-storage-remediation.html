@@ -76,26 +76,16 @@ title: "Deep Storage Remediation"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the PowerShell 5.1 pipeline required to safely purge system caches and trigger background cleanup utilities over the network.
+            While the UHDC uses PowerShell to calculate exact bytes freed and dynamically loop through all user profiles, a junior technician should know how to forcefully clear system caches manually. The training engine teaches them how to utilize Sysinternals PsExec to remotely execute a chained CMD command as the SYSTEM account to wipe the Windows Temp folder, clear the SCCM cache, and trigger the native Windows Disk Cleanup utility in the background.
         </p>
 
         <div class="mock-code">
-            <span class="cmd">try</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Invoke-Command</span> <span class="param">-ComputerName</span> <span class="var">$Target</span> <span class="param">-ScriptBlock</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">'C:\Windows\ccmcache\*'</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Remove-Item</span> <span class="str">'C:\Windows\Temp\*'</span> <span class="param">-Recurse</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Clear-RecycleBin</span> <span class="param">-Force</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">Start-Process</span> <span class="str">'cleanmgr.exe'</span> <span class="param">-ArgumentList</span> <span class="str">'/sagerun:1'</span> <span class="param">-WindowStyle</span> Hidden<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            } <span class="cmd">catch</span> {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted"># Fallback if WinRM is blocked by the local firewall</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmd">psexec.exe</span> <span class="str">\\</span><span class="var">$Target</span> <span class="param">-s</span> <span class="cmd">powershell.exe</span> <span class="param">-EncodedCommand</span> <span class="var">$Base64</span><br>
-            }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="param">-s</span> <span class="cmd">cmd.exe</span> <span class="param">/c</span> <span class="str">"del /q /f /s C:\Windows\Temp\* & del /q /f /s C:\Windows\ccmcache\* & cleanmgr.exe /sagerun:1"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-warning); background: rgba(245, 158, 11, 0.05);">
             <h4 style="color: var(--accent-warning);"><i class="fa-solid fa-person-chalkboard"></i> The In-Person Equivalent</h4>
-            <p>Opening Control Panel to clear the Configuration Manager cache, pressing Win+R to delete %temp% files, right-clicking to empty the Recycle Bin, and running the Windows Disk Cleanup utility.</p>
+            <p>Opening Control Panel to clear the Configuration Manager cache, pressing Win+R to delete %temp% files, emptying the Recycle Bin, and running the Disk Cleanup utility.</p>
         </div>
     </div>
 </section>
