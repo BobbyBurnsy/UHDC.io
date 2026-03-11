@@ -100,17 +100,11 @@ title: "Software Inventory Audit"
 
         <h3 style="color: var(--text-primary); margin-bottom: 1rem;">How Junior Techs Learn This Tool:</h3>
         <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
-            When Training Mode is enabled, the UHDC pauses execution to explain the architectural dangers of <code>Win32_Product</code> and teaches the correct method of parsing the Windows Registry for software data.
+            Many junior techs are taught to use <code>wmic product get name</code> to find installed software. However, querying the Win32_Product class is dangerous because it triggers a consistency check that can accidentally reconfigure or repair installed MSIs, causing massive CPU spikes. The training engine teaches them how to safely parse the registry instead using Sysinternals PsExec and the native <code>reg query</code> command.
         </p>
 
         <div class="mock-code">
-            <span class="text-muted"># Define 64-bit and 32-bit registry paths</span><br>
-            <span class="var">$paths</span> = @(<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'</span><br>
-            )<br><br>
-            <span class="text-muted"># Query properties and filter out system components</span><br>
-            <span class="var">$installed</span> = <span class="cmd">Get-ItemProperty</span> <span class="var">$paths</span> | <span class="cmd">Where-Object</span> { <span class="var">$_</span>.DisplayName -and <span class="var">$_</span>.SystemComponent -ne 1 }
+            <span class="cmd">psexec</span> <span class="str">\\$Target</span> <span class="cmd">reg query</span> HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall <span class="param">/s /v</span> DisplayName | <span class="cmd">findstr</span> <span class="str">"DisplayName"</span>
         </div>
 
         <div class="mock-inperson" style="border-left-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
